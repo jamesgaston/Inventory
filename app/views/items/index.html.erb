@@ -1,0 +1,40 @@
+<h1>Inventory</h1>
+<table width="100%">
+<tr>
+    <th>&nbsp;</th>
+	<th>Name</th>
+    <th>&nbsp;</th>
+	<th>Description</th>
+	<th>Location</th>
+</tr>
+<% counter = 0 %>
+<% for i in @items %>
+<tr>
+	<td><%= counter = counter + 1 %></td>
+	<td><%= i.name %></td>
+	<td>
+	    <%= link_to "Edit", {:controller=>"items", :action=>"edit", :id=>i.id} %>
+	        
+	    <%= link_to "Delete", 
+	        {:controller => "items", :action=>"remove", 
+	         :id=>i.id},{ :confirm => "Are you sure you want to delete #{i.name}?"} %>
+	
+	
+	</td>
+	<td><%= i.description %></td>
+	<td><%= i.location %></td>
+</tr>
+<% end %>
+<tr>
+    <td></td>
+	<td><%= link_to "New Item", new_item_url %></td>
+    <td></td>
+	<td></td>
+	<td></td>
+</tr>
+</table>
+
+
+
+<br />
+<br />

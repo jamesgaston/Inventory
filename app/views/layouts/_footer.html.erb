@@ -1,0 +1,9 @@
+<%= link_to "About", about_url %> - 
+<%= link_to "Contact", contact_url %> 
+<% if flash[:notice] %>
+    <br /><%= flash[:notice] %>
+<% end %>
+<% if flash[:error] %>
+    <br /><%= flash[:error] %>
+<% end %>
+  

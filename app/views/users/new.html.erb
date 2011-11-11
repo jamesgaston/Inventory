@@ -1,0 +1,20 @@
+
+<h1>Sign Up</h1>
+<%= form_for(@user) do |f| %>
+
+<%= render 'shared/user_error_messages' %>
+
+<%= f.label :email %><br />
+<%= f.text_field :email %><br />
+
+<%= f.label :password %><br />
+<%= f.password_field :password %><br />
+
+<%= f.label :password_confirmation, "Confirm Password" %><br />
+<%= f.password_field :password_confirmation %><br />
+
+
+<%= f.submit "Sign Up" %><br /><br />
+
+<% end %>
+ 

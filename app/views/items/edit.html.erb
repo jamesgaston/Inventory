@@ -1,0 +1,21 @@
+<h1>Edit Item</h1>
+
+<%= form_for(@item) do |f| %>
+
+<%= render 'shared/item_error_messages' %>
+
+<%= f.label :name %><br />
+<%= f.text_field :name %><br />
+
+<%= f.label :description %><br />
+<%= f.text_field :description %><br />
+
+<%= f.label :location %><br />
+<%= f.text_field :location %><br />
+
+
+
+<%= f.submit "Update Item" %><br /><br />
+
+<%= f.hidden_field :user_id %>
+<% end %>

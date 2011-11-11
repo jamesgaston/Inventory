@@ -1,0 +1,10 @@
+<% if @user.errors.any? %>
+	<%= pluralize(@user.errors.count, "error") %>
+	prohibited this user from being saved:<br />
+	There were problems with the following fields:
+	<ul>
+		<% @user.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+<% end %>
