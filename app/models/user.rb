@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
 
 		# create a virtual password attribute 
 	attr_accessor :password
-
-    attr_accessible :email, :password, :password_confirmation
+   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone
+   
 
 	has_many :items
 

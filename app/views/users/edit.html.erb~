@@ -30,7 +30,7 @@
 
 	(We'll add lookups for country and province/state later ...)<br /> 
    
- 
+   <%= f.hidden_field :encrypted_password %> 
 	<%= f.submit "Save" %><br /><br />
    <%= submit_tag "Cancel", { :name => "user[Cancel]" } %>
   
