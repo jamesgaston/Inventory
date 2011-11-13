@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
 
   def index
    user = current_user
-	@items = Item.where("user_id = ?", user.id).order('Name')
+	@items = Item.where("user_id = ?", user.id)
   end
 
   def create

@@ -2,11 +2,9 @@
 <%= link_to "Help", help_url %> -
 <% if signed_in? %>
 	<%= link_to ("Sign Out " + @current_user.email), signout_path, :method => :delete %> -
+   <%= link_to "My Inventory", items_url %> - 
 <% else %>
 	<%= link_to "Sign In", new_session_url %> -
-	<%= link_to "Sign Up", new_user_url %> - 
+	<%= link_to "Sign Up", new_user_url %>  
 <% end %>
 
- 
-
-<%= link_to "My Inventory", items_url %> 
