@@ -14,15 +14,20 @@ class UsersController < ApplicationController
 
   def index
   end
-
+  
+# create a new user after checking that the user didn't press the cancel button
   def create
-	@user = User.new(params[:user])
-	if @user.save
-		flash[:notice] = "User #{@user.email} was successfully created."
-		redirect_to( :controller => 'pages', :action => 'home' )
+  if !params[:user].include?( 'Cancel' )
+		@user = User.new(params[:user])
+		if @user.save
+			flash[:notice] = "User #{@user.email} was successfully created."
+			redirect_to( :controller => 'pages', :action => 'home' )
+		else
+			flash.now[:error] = "User could not be created."
+			render :action => 'new'
+		end
 	else
-		flash.now[:error] = "User could not be created."
-		render :action => 'new'
+		redirect_to( :controller => 'pages', :action => 'home' )
 	end
   end
 

@@ -39,13 +39,6 @@ def signed_in?
 	!current_user.nil? 
 end
 
-# method sign_out
-# 
-# delete the remember token and set current user to nil 
-def sign_out
-	cookies.delete(:remember_token)
-	self.current_user = nil
-end
 
 
 

@@ -10,13 +10,20 @@ class SessionsController < ApplicationController
 		flash.now[:error] = "Sorry, login information incorrect."
 		render :action => "new"
 	else
+		sign_in user 
 			# when redirecting use flash as it appears for one link request 
 		flash[:notice] = "User #{user.email} successfully logged in."
 		redirect_to( :controller => 'items', :action => 'index' )
 	end
   end
 
-  def destroy
-  end
+  
+# method destroy
+#
+def destroy
+	sign_out   # in SessionsHelper 
+	redirect_to root_path
+end
+
 
 end

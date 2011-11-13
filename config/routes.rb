@@ -13,6 +13,7 @@ Inventory1::Application.routes.draw do
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
   match '/signin', :to => 'pages#signin'
+  match '/signout', :to => 'sessions#destroy'
 
 # routing for home page      
   root :to => 'pages#home'
