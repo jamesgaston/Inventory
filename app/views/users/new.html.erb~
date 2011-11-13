@@ -12,7 +12,7 @@
 	<%= f.label :password_confirmation, "Confirm Password" %><br />
 	<%= f.password_field :password_confirmation %><br />
 
-	<br />Optional Information<br /> 
+	Optional Information<br /> 
 
 	<%= f.label :first_name %><br />
 	<%= f.text_field :first_name %><br />
