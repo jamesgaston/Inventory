@@ -6,18 +6,23 @@
     <th>&nbsp;</th>
 	<th>Description</th>
 	<th>Location</th>
+   <th></th>
+   <th></th>
+
 </tr>
 <% counter = 0 %>
 <% for i in @items %>
 <tr>
 	<td><%= counter = counter + 1 %>.</td>
-	<td><%= link_to i.name, {:controller=>"items", :action=>"edit", :id=>i.id} %></td>
+	<td><%= link_to i.name, {:controller=>"items", :action=>"edit", :id=>i.id},{:title => "Edit Item"} %></td>
 	<td><%= link_to image_tag("delete-icon.png"),  
 	        {:controller => "items", :action=>"remove", 
 	         :id=>i.id},{:title => "Delete Item", :confirm => "Are you sure you want to delete #{i.name}?"} %>
    </td>
 	<td><%= i.description %></td>
 	<td><%= i.location %></td>
+   <td><%= i.category_id ? Category.find( i.category_id).name : "" %> </td>
+   <td><%= i.ownership_id ? Ownership.find( i.ownership_id).name : "" %> </td>
 </tr>
 <% end %>
 </table>

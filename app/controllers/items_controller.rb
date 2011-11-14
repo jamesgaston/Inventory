@@ -1,12 +1,16 @@
 class ItemsController < ApplicationController
 
   def new
+   @categories = Category.order("name ASC")
+   @ownerships = Ownership.order("name ASC")
 	@item = Item.new
   user = current_user
 	@item.user_id = user.id
   end
 
   def edit
+   @categories = Category.order("name ASC")
+   @ownerships = Ownership.order("name ASC")
 	@item = Item.find_by_id( params[:id] )
   end
 

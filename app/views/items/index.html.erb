@@ -6,6 +6,9 @@
     <th>&nbsp;</th>
 	<th>Description</th>
 	<th>Location</th>
+   <th>Category</th>
+   <th>Ownership</th>
+
 </tr>
 <% counter = 0 %>
 <% for i in @items %>
@@ -18,6 +21,8 @@
    </td>
 	<td><%= i.description %></td>
 	<td><%= i.location %></td>
+   <td><%= i.category_id ? Category.find( i.category_id).name : "" %> </td>
+   <td><%= i.ownership_id ? Ownership.find( i.ownership_id).name : "" %> </td>
 </tr>
 <% end %>
 </table>
