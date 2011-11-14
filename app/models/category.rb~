@@ -1,5 +1,9 @@
 class Category < ActiveRecord::Base
 	has_many :items
-	scope :ordered, order("name")
+	
+	
+	def self.ordered
+		order("name")
+	end
 		
 end

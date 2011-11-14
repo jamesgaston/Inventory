@@ -1,0 +1,23 @@
+<h1>Edit Item</h1>
+
+<%= form_for(@item) do |f| %>
+
+<%= render 'shared/item_error_messages' %>
+
+<%= f.label :name %><br />
+<%= f.text_field :name %><br />
+
+<%= f.label :description %><br />
+<%= f.text_field :description %><br />
+
+<%= f.label :location %><br />
+<%= f.text_field :location %><br />
+
+<%= f.collection_select :category_id, @categories, :id, :name, :prompt => "Select Category" %>
+<%= f.collection_select :ownership_id, @ownerships, :id, :name, :prompt => "Select Ownership Status" %>
+
+
+<%= f.submit "Update Item" %><br /><br />
+
+<%= f.hidden_field :user_id %>
+<% end %>
