@@ -1,5 +1,19 @@
 Inventory1::Application.routes.draw do
 
+  get "ownerships/new"
+
+  get "ownerships/edit"
+
+  get "ownerships/destroy"
+
+  get "ownerships/show"
+
+  get "ownerships/index"
+
+  get "ownerships/create"
+
+  get "ownerships/update"
+
   resources :sessions, :only =>[:new, :create, :destroy]
   resources :statuses
   resources :categorys  
