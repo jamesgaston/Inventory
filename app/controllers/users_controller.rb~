@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+     @provinces = Province.ordered 
 	  @user = User.find(params[:id])
   end
 
@@ -16,10 +17,10 @@ class UsersController < ApplicationController
   def index
   end
 
-  
-     # create a new user 
+    # method  create   	
+    # create a new user  
   def create
-    # checking that the user didn't press the cancel button
+    					# check that the user didn't press the cancel button
   if !params[:user].include?( 'Cancel' )
 		@user = User.new(params[:user])
 		if @user.save
@@ -37,11 +38,13 @@ class UsersController < ApplicationController
 
 
 	# method update
-	# update the user info unless they pressed the cancel button   
+	# update the user's info unless they pressed the cancel button   
   def update
    if !params[:user].include?( 'Cancel' )
 		@user = User.find_by_id(params[:id])
-		if @user.update_attributes(params[:user])
+#		if @user.update_attributes(params[:user])
+		@user.attributes = params[:user]
+		if @user.save(false) 
 			flash[:notice] = "User #{@user.email} was successfully updated."
 		 	redirect_to( :controller => 'items', :action => 'index' )
 		else

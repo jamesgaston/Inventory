@@ -1,0 +1,10 @@
+<% if @item.errors.any? %>
+	<%= pluralize(@item.errors.count, "error") %>
+	prohibited this item from being saved:<br />
+	There were problems with the following fields:
+	<ul>
+		<% @item.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+	</ul>
+<% end %>

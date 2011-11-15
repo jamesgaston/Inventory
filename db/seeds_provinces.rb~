@@ -8,7 +8,7 @@
     Province.create(:name=>"Nunavut", :abbreviation=>"NU", :country_id=>1)
     Province.create(:name=>"Ontario", :abbreviation=>"ON", :country_id=>1)
     Province.create(:name=>"Prince Edward Island", :abbreviation=>"PE", :country_id=>1)
-    Province.create(:name=>"Quebec", :abbreviation=>"QC", :country_id=>1)
+    Province.create(:name=>"Québec", :abbreviation=>"QC", :country_id=>1)
     Province.create(:name=>"Saskatchewan", :abbreviation=>"SK", :country_id=>1)
     Province.create(:name=>"Yukon", :abbreviation=>"YT", :country_id=>1)
     Province.create(:name=>"Alaska",     :abbreviation=>"AK", :country_id=>2)

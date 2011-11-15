@@ -11,9 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114022945) do
+ActiveRecord::Schema.define(:version => 20111115022536) do
 
   create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20111114022945) do
 
   create_table "ownerships", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "provinces", :force => true do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.integer  "country_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

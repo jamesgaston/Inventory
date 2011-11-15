@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 	attr_accessor :password
    attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone
    
-
 	has_many :items
+	belongs_to :province
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
 
 	before_save :encrypt_password
-	
+	before_update :encrypt_password
 	
 		# return true if the user's password matches the submitted password
 	def has_password?(submitted_password)

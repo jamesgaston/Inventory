@@ -1,22 +1,8 @@
 Inventory1::Application.routes.draw do
-
-  get "ownerships/new"
-
-  get "ownerships/edit"
-
-  get "ownerships/destroy"
-
-  get "ownerships/show"
-
-  get "ownerships/index"
-
-  get "ownerships/create"
-
-  get "ownerships/update"
-
+  
+  resources :ownerships 
   resources :sessions, :only =>[:new, :create, :destroy]
-  resources :statuses
-  resources :categorys  
+  resources :categories  
   resources :users 
   resources :items 
 
@@ -26,7 +12,7 @@ Inventory1::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
-  match '/signin', :to => 'pages#signin'
+  match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
 
 # routing for home page      

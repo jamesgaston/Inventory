@@ -1,7 +1,12 @@
 class Item < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :category
-	belongs_to :status
+	belongs_to :ownership
 	
-	
+	validates :name, :presence => true
+	               
+
+	validates :category_id, :presence => true
+
+	validates :ownership_id, :presence => true
 end
