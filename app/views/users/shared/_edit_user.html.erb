@@ -27,7 +27,7 @@
    <%= f.label :province %><br />
    <%= f.collection_select :province_id, @provinces, :id, :name, :prompt => "Select Province / State" %>
 
-
+    <br />
    <%= f.label :postal_code %><br />
 	<%= f.text_field :postal_code, :size => 7 %><br />
 

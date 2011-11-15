@@ -42,12 +42,11 @@ class UsersController < ApplicationController
   def update
    if !params[:user].include?( 'Cancel' )
 		@user = User.find_by_id(params[:id])
-#		if @user.update_attributes(params[:user])
-		@user.attributes = params[:user]
-		if @user.save(false) # doesn't work ... 
+		if @user.update_attributes(params[:user])
 			flash[:notice] = "User #{@user.email} was successfully updated."
 		 	redirect_to( :controller => 'items', :action => 'index' )
 		else
+          @provinces = Province.ordered 
 			flash.now[:error] = "User could not be updated."
 			render :action => 'edit'
 		end	
