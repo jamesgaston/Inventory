@@ -6,8 +6,8 @@
     <th>&nbsp;</th>
 	<th>Description</th>
 	<th>Location</th>
-   <th></th>
-   <th></th>
+   <th>Category</th>
+   <th>Ownership</th>
 
 </tr>
 <% counter = 0 %>
@@ -15,7 +15,11 @@
 <tr>
 	<td><%= counter = counter + 1 %>.</td>
 	<td><%= link_to i.name, {:controller=>"items", :action=>"edit", :id=>i.id},{:title => "Edit Item"} %></td>
-	<td><%= link_to image_tag("delete-icon.png"),  
+
+	<td><%= button_to "Delete", {:action => "destroy", :id =>i.id}, 
+	        :confirm => "Are you sure?", :method => :delete %>
+	 
+	        <%= link_to image_tag("delete-icon.png"),  
 	        {:controller => "items", :action=>"remove", 
 	         :id=>i.id},{:title => "Delete Item", :confirm => "Are you sure you want to delete #{i.name}?"} %>
    </td>

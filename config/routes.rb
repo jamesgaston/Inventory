@@ -3,10 +3,10 @@ Inventory1::Application.routes.draw do
   resources :ownerships 
   resources :sessions, :only =>[:new, :create, :destroy]
   resources :categories  
+  resources :provinces  
+  resources :countries  
   resources :users 
   resources :items 
-
-  match '/items/:id/remove', :to => 'items#remove'
 
 # routing for static pages:    
   match '/contact', :to => 'pages#contact'
