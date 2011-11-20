@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
 
-
   def home
   end
 
@@ -13,10 +12,5 @@ class PagesController < ApplicationController
   def help
   end
 
-  def signup
-  end
-
-  def signin
-  end
 
 end

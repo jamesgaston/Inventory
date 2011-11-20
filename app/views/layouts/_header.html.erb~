@@ -1,10 +1,22 @@
-<%= link_to "Home", root_url %> - 
-<%= link_to "Help", help_url %> -
-<% if signed_in? %>
-	<%= link_to ("Sign Out " + @current_user.email), signout_path, :method => :delete %> -
-   <%= link_to "My Inventory", items_url %> - 
-   <%= link_to "My Profile", edit_user_url(@current_user.id) %>
-<% else %>
-	<%= link_to "Sign In", new_session_url %> -
-	<%= link_to "Sign Up", new_user_url %>  
-<% end %>
+
+
+
+<div id="top_menu" class="menu">
+	<% if signed_in? %>
+		<div class="menu" style="float: left; width: 49%;" >
+	   	<%= link_to "My Inventory", items_url %> - 
+   		<%= link_to "Search", help_url %> -
+   		<%= link_to "Help", help_url %> 
+   	</div> 
+   	<div  class="menu" style="float: right; width: 49%; text-align: right;">
+			<%= link_to "Sign Out ", signout_path, :method => :delete %> -
+	   	<%= link_to @current_user.email, edit_user_url(@current_user.id) %>
+		</div>
+  <% else %>
+		<div class="menu" style="float: left;" >
+			<%= link_to "My Inventory", root_url %> - 
+			<%= link_to "Sign In", new_session_url %> -
+			<%= link_to "Sign Up", new_user_url %>  
+		</div>
+	<% end %>
+</div>

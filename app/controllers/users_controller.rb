@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+     @provinces = Province.ordered 
 		@user = User.new
   end
 
@@ -28,6 +29,7 @@ class UsersController < ApplicationController
 			flash[:notice] = "User #{@user.email} was successfully created."
 			redirect_to( :controller => 'pages', :action => 'home' )
 		else
+         @provinces = Province.ordered 
 			flash.now[:error] = "User could not be created."
 			render :action => 'new'
 		end
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
 			flash[:notice] = "User #{@user.email} was successfully updated."
 		 	redirect_to( :controller => 'items', :action => 'index' )
 		else
-          @provinces = Province.ordered 
+         @provinces = Province.ordered 
 			flash.now[:error] = "User could not be updated."
 			render :action => 'edit'
 		end	

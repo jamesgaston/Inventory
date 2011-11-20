@@ -13,7 +13,7 @@ H1, H2, H3, H4 {
 
 TH {
 	background-color: grey;
-	color: black; padding: 0.5em;
+	color: black; background: grey; padding: 0.5em;
 	font: 12pt Charcoal,sans-serif; text-transform: capitalize;
 }
 

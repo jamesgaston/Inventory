@@ -21,14 +21,6 @@ class ItemsController < ApplicationController
 	 redirect_to( :controller => 'items', :action => 'index' )
   end
 
- def remove
-	@item = Item.find_by_id( params[:id] )
-	@item.destroy
-	flash[:notice] = "Item #{@item.name} was successfully deleted."
-	 redirect_to( :controller => 'items', :action => 'index' )
-  end
-  
-
 
   def show
   end
