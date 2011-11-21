@@ -8,15 +8,16 @@ Inventory1::Application.routes.draw do
   resources :users 
   resources :items 
 
- # match '/items/:id/remove', :to => 'items#remove'
-
 # routing for static pages:    
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
   match '/help', :to => 'pages#help'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/home', :to => 'pages#home', :as "home" 
 
+  match '/admin', :to => 'users#useradmin', :as => "admin" 
+  
 # routing for home page      
   root :to => 'pages#home'
 

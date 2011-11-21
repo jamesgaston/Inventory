@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
+	before_filter :set_context 
+
   def new
-     @provinces = Province.ordered 
-		@user = User.new
+      before_user_edit
+		@user = User.new(:user_type => 0)  
   end
 
   def edit
-     @provinces = Province.ordered 
-	  @user = User.find(params[:id])
-  end
+     before_user_edit
+     @user = User.find(params[:id])
+ end
 
   def destroy
   end
@@ -16,6 +18,8 @@ class UsersController < ApplicationController
   end
 
   def index
+  	@users = User.order("email ASC")
+  	@context = "admin"
   end
 
     # method  create   	
@@ -29,7 +33,7 @@ class UsersController < ApplicationController
 			flash[:notice] = "User #{@user.email} was successfully created."
 			redirect_to( :controller => 'pages', :action => 'home' )
 		else
-         @provinces = Province.ordered 
+         before_user_edit 
 			flash.now[:error] = "User could not be created."
 			render :action => 'new'
 		end
@@ -48,14 +52,42 @@ class UsersController < ApplicationController
 			flash[:notice] = "User #{@user.email} was successfully updated."
 		 	redirect_to( :controller => 'items', :action => 'index' )
 		else
-         @provinces = Province.ordered 
+         before_user_edit
 			flash.now[:error] = "User could not be updated."
 			render :action => 'edit'
 		end	
   	else
-		redirect_to( :controller => 'pages', :action => 'home' )
+		redirect_to( :controller => 'items', :action => 'index' )
 	end
  end
+
+  def useradmin
+  		if admin(@current_user) == false 
+ 		  redirect_to home_url 		
+  		end
+  		@context = "admin" 
+  end
+
+
+	protected
+	
+		  # 	
+		  # @context may contain info to guide whether menus are live 
+	     # clear out the context variable before each method call
+	     # if the method has some important context info, it will be set there
+	     # alternatively we could set it to some default value 
+	      
+	def set_context
+		@context = "" 
+	end
+
+		  # call this before any new item or edit item call
+		  # as we need to populate the lookup tables and set the context  
+	def before_user_edit
+	   @provinces = Province.ordered 
+   	@context = "edit"
+  end
+
 
 
 end

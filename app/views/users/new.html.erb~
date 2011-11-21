@@ -1,42 +1,8 @@
 
 <h1>Sign Up</h1>
-<%= render 'users/shared/edit_user' %>
+<%= render :partian => 'users/shared/edit_user', :context => "new" %>
 
-<%= form_for(@user) do |f| %>
-	<%= render 'users/shared/user_error_messages' %>
-    
-	<%= f.label :email %><br /> 
-	<%= f.text_field :email %><br />
 
-	<%= f.label :password %> (6 characters minimum)<br />	
-	<%= f.password_field :password %><br />
-
-	<%= f.label :password_confirmation, "Confirm Password" %><br />
-	<%= f.password_field :password_confirmation %><br />
-
-	<br />Optional Information<br /> 
-
-	<%= f.label :first_name %><br />
-	<%= f.text_field :first_name %><br />
-
-	<%= f.label :last_name %><br />
-	<%= f.text_field :last_name %><br />
-
-   <%= f.label :phone %><br />
-	<%= f.text_field :phone %><br />
-
-   <%= f.label :city %><br />
-	<%= f.text_field :city %><br />
-
-   <%= f.label :postal_code %><br />
-	<%= f.text_field :postal_code, :size => 7 %><br />
-
-	(We'll add lookups for country and province/state later ...)<br /> 
-
-	<%= f.submit "Sign Up" %><br /><br />
-   <%= submit_tag "Cancel", { :name => "user[Cancel]" } %>
-  
-<% end %>
  
 
 

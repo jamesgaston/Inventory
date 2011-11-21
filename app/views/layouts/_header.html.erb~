@@ -1,22 +1,52 @@
-
-
-
 <div id="top_menu" class="menu">
 	<% if signed_in? %>
+	
 		<div class="menu" style="float: left; width: 49%;" >
-	   	<%= link_to "My Inventory", items_url %> - 
-   		<%= link_to "Search", help_url %> -
-   		<%= link_to "Help", help_url %> 
+
+	   	<% if @context.nil? || (@context != "edit") %>
+		   	<%= link_to "My Inventory", items_url if @context.nil? || (@context != "inventory")%>  
+ 		   	<%= raw('<span class="deadlink">My Inventory<span>') if (@context.nil? == false) && (@context == "inventory")%>  
+   			<%= link_to "Search", help_url %> 
+     			<%= link_to "Help", help_url %>
+     			<% if admin(@current_user) == true %>
+					<% if (@context.nil? == false) &&(@context == "admin") %>
+					<% else %>      				
+     					<%= link_to "Admin", admin_url %>
+     				<% end %> 
+     			<% end %>
+     		<% else %>
+				<span class="deadlink">My Inventory<span> 
+				<span class="deadlink">Search<span> 
+				<span class="deadlink">Help<span>     		
+     		<% end %> 
    	</div> 
+   	
    	<div  class="menu" style="float: right; width: 49%; text-align: right;">
-			<%= link_to "Sign Out ", signout_path, :method => :delete %> -
-	   	<%= link_to @current_user.email, edit_user_url(@current_user.id) %>
+	   	<% if @context.nil? || (@context != "edit") %>
+				<%= link_to "Sign Out ", signout_path, :method => :delete %> 
+		   	<%= link_to @current_user.email, edit_user_url(@current_user.id) %>
+    		<% else %>
+				<span class="deadlink">Sign Out<span> 
+				<span class="deadlink"><%= @current_user.email %><span> 
+     		<% end %> 
 		</div>
+
   <% else %>
+
 		<div class="menu" style="float: left;" >
-			<%= link_to "My Inventory", root_url %> - 
-			<%= link_to "Sign In", new_session_url %> -
-			<%= link_to "Sign Up", new_user_url %>  
+	   	<% if @context.nil? || (@context != "edit") %>
+				<%= link_to "My Inventory", root_url %> 
+				<%= link_to "Sign In", new_session_url %> 
+				<%= link_to "Sign Up", new_user_url %>  
+   		<% else %>
+				<span class="deadlink">My Inventory<span> 
+				<span class="deadlink">Sign In<span> 
+				<span class="deadlink">Sign Up<span> 
+     		<% end %> 
 		</div>
+
 	<% end %>
+
+	<div class="clearfloat"></div>
+
 </div>

@@ -1,0 +1,9 @@
+<h1>Provinces and States</h1>
+<table width="100%">
+<% for p in @provinces %>
+	<tr>  
+		<td><%= p.name %></td>  
+      <td><%= Country.find_by_id(p.country_id).name  %></td> 	
+	</tr>
+<% end %> 
+</table> 

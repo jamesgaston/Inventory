@@ -6,39 +6,6 @@
  *= require_tree . 
 */
 
-H1, H2, H3, H4 {
-	color: black; background: white; padding: 0.5em;
-	font: 24pt Charcoal,sans-serif; text-transform: capitalize;
-}
-
-TH {
-	background-color: grey;
-	color: black; padding: 0.5em;
-	font: 12pt Charcoal,sans-serif; text-transform: capitalize;
-}
-
-TD {
-	color: black; background: white; padding: 0.5em;
-	font: 10pt Charcoal,sans-serif; text-transform: capitalize;
-}
-
-A {
-	color: blue; background: white; padding: 0.5em;
-	font: 10pt Charcoal,sans-serif; text-transform: capitalize;
-	font-weight: bold;
-   text-decoration: underline;
-}
-
-	# limiting a:'s to :link avoids anchors 
-A:link:hover, A:visited:hover {
-   text-decoration: underline ! important; 
-   color: red ! important;
-}
-.menu a:link, .menu a:visited {
-   text-decoration: none;
-}
-
-
 body {
   color: black; 
   margin: 0;
@@ -52,6 +19,68 @@ body {
   background: transparent !important;
 }
 
+h1, h2, h3, h4 {
+	color: black; 
+	background: white; 
+	padding: 0;
+	text-transform: capitalize;
+}
+h1 {	font: 18pt Charcoal,sans-serif; }
+h2 {	font: 16pt Charcoal,sans-serif; }
+h3 { 	font: 15pt Charcoal,sans-serif; }
+h4 {	font: 14pt Charcoal,sans-serif; }
+
+
+tr, td { 	border-bottom: 1px dotted grey ! important; }
+th {
+	background-color: grey;
+	color: black; 
+	padding: 0em;
+	font: small Charcoal,sans-serif; 
+	text-transform: capitalize;
+}
+td {
+	color: black; 
+	background: white; 
+	padding: 0em;
+	font: 10pt Charcoal,sans-serif; 
+	text-transform: capitalize;
+}
+
+a:link, a:visited {
+	color: blue; 
+	background: white; 
+	padding: 0.5em;
+	font: 10pt Charcoal,sans-serif; 
+	text-transform: capitalize;
+	font-weight: bold;
+   text-decoration: underline;
+}
+a:link:hover, a:visited:hover {
+   text-decoration: underline; 
+   color: red;
+}
+
+.tableheader, th {
+	font-size: x-small; 
+
+	
+}
+
+.notice {
+	background-color: lightgrey ! important;
+
+}
+
+.error {
+	background-color: yellow  ! important;
+}
+
+
+#yield {
+	margin-left: 2em;
+	margin-bottom: 1em;
+}
 
 .clearfloat { /* place on a div or break element, should be final element before close of container that should fully contain a float */
     clear: left;
@@ -68,11 +97,28 @@ body {
   	 padding-bottom: 10px ! important;
   	 border: none;
     font-family: "Georgia", "Arial","Verdana",Georgia,serif;
-    text-decoration: none ! important;
+    text-decoration: none;
 }
 #top_menu { border-bottom: 1px solid grey ! important; }
 #bottom_menu {  border-top: 1px solid grey ! important; }
 
-		  
+#top_menu a:link:hover, #top_menu a:visited:hover,
+#bottom_menu a:link:hover, #bottom_menu a:visited:hover  {
+   text-decoration: underline ! important; 
+   color: red ! important;
+}
+#top_menu  a:link, #top_menu  a:visited,
+#bottom_menu  a:link, #bottom_menu  a:visited  {
+   text-decoration: none;
+}
+	
+.deadlink {
+	color: black ! important 
+	background: white; 
+	padding: 0.5em ! important;
+	font: 10pt Charcoal,sans-serif ! important; 
+	text-transform: capitalize ! important;
+	font-weight: bold ! important;
+}		  
 
 

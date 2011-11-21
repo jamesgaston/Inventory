@@ -3,13 +3,15 @@ class User < ActiveRecord::Base
 
 		# create a virtual password attribute 
 	attr_accessor :password
-   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone
+   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone, :user_type
+   
    
 	has_many :items
 	belongs_to :province
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	
+	validates :user_type, :presence => true
 	validates :email, :presence => true,
 					:format => {:with => email_regex },
 					:uniqueness => { :case_sensitive => false}

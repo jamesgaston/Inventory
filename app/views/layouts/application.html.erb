@@ -7,19 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	 <%= render :partial => 'layouts/header' %>
 
-	<%= render 'layouts/header' %>
-	
-	<div><%= yield %></div>
+	<div id="yield"><%= yield %></div>
 
 	<%= render 'layouts/footer' %>
 
 	<% flash.each do |key, value| %>
-			<div class="flash <%= key %>"><%= value %></div>  
+			<div class="<%= key %>"><%= key %>: <%= value %></div>  
 	<% end %>
 
 	<% if Rails.env.development? %>	
-			<div id="debug" ><%= debug(params) %></div> 
+			<div id="debug" ><%= debug(params) %></div>
+			<% if @current_user.nil? == false %>			
+            <%= @current_user.id %>    				
+				<%= @current_user.email %>
+				<%= " ADMIN" if admin(@current_user) %>
+			<% end %> 	  
 	<% end %>
 
 </body>

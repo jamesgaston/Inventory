@@ -11,7 +11,8 @@ class OwnershipsController < ApplicationController
   def show
   end
 
-  def index
+ def index
+    @ownerships = Ownership.order("name") 
   end
 
   def create

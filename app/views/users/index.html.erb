@@ -1,2 +1,34 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<table width="100%">
+ <tr class="tableheader">
+   <th>&nbsp;</th>
+	<th>User <%= link_to "+New", new_user_url, {:title => "Add a new user"} %></th>
+   <th>ID</th>
+   <th>Joined</th>
+   <th>Type</th>
+   <th>&nbsp;</th>
+   <th>Last</th>
+   <th>First</th>
+   <th>City</th>
+   <th>Province/State</th>
+</tr>
+<% counter = 0 %>
+<% for i in @users %>
+<tr>
+	<td><%= counter = counter + 1 %>.</td>
+	<td><%= link_to i.email, {:controller=>"users", :action=>"edit", :id=>i.id},{:title => "Edit User"} %>
+		 <%= "** me **" if current_user.id == i.id %>  	
+	</td>
+   <td align='right' ><%= i.id.to_s %></td>
+   <td align='center' ><%= i.created_at.strftime("%b %e, %Y") %></td>
+   <td align='right' ><%= i.user_type.to_s %></td>
+	<td><%= button_to "Delete", {:action => "destroy", :controller => "users", :id =>i.id}, 
+	        :confirm => "Are you sure?", :method => :delete %>
+   </td>
+	<td><%= i.last_name.nil? ? "" :  i.last_name.truncate(20, :omission =>"...") %></td>
+	<td><%= i.first_name.nil? ? "" :  i.first_name.truncate(20, :omission =>"...") %></td>
+	<td><%= i.city.nil?  ? "" :  i.city.truncate(20, :omission =>"...") %></td>
+   <td><%= i.province_id ? Province.find( i.province_id).name : "" %> </td>
+</tr>
+<% end %>
+</table>
+<br />

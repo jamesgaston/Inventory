@@ -34,7 +34,7 @@ end
 
 # method signed_in
 #
-# a user is signed in of current_user is not nil 
+# a user is signed in if current_user is not nil 
 def signed_in?
 	!current_user.nil? 
 end
@@ -45,6 +45,22 @@ end
 def sign_out
 	cookies.delete(:remember_token)
 	self.current_user = nil
+end
+
+# method signed_in
+#
+# a user is signed in of current_user is not nil 
+def admin(user)
+	if signed_in?
+		if true
+	   	return true
+		end	
+	end
+	return false 
+end
+
+def user_type(user)
+
 end
 
 

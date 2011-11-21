@@ -1,23 +1,24 @@
-class CategorysController < ApplicationController
-  def new
+class CategoriesController < ApplicationController
+  def show
   end
 
   def edit
   end
 
-  def destroy
-  end
-
-  def show
-  end
-
-  def index
+  def new
   end
 
   def create
   end
 
   def update
+  end
+
+  def delete
+  end
+
+  def index
+  	@categories = Category.order("name") 
   end
 
 end

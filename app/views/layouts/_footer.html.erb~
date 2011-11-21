@@ -1,8 +1,13 @@
 
 <div id="bottom_menu" class="menu">
 	<div class="menu" style="float: left; width: 50%;" >
-		<%= link_to "About", about_url %> - 
-		<%= link_to "Contact", contact_url %>
+	   	<% if @context.nil? || (@context != "edit") %>
+					<%= link_to "About", about_url %> 
+					<%= link_to "Contact", contact_url %>
+    		<% else %>
+				<span class="deadlink">About<span> 
+				<span class="deadlink">Contact<span> 
+     		<% end %> 
 	</div>
 	<div class="clearfloat"></div>  
 </div>
