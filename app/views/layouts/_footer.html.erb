@@ -1,15 +1,30 @@
 
 <div id="bottom_menu" class="menu">
-	<div class="menu" style="float: left; width: 50%;" >
-	   	<% if @context.nil? || (@context != "edit") %>
+	<table style="width: 100%;">
+		<tr>
+		
+			<td style="text-align: left; width=50%;">
+
 					<%= link_to "About", about_url %> 
 					<%= link_to "Contact", contact_url %>
-    		<% else %>
-					<span class="deadlink">About<span> 
-					<span class="deadlink">Contact<span> 
-     		<% end %> 
-	</div>
-	<div class="clearfloat"></div>  
+			</td>
+
+			<% if signed_in_as_admin %>
+
+				<td style="text-align: right; width=50%;">
+					<div style="border: 0px dotted blue;">
+							<%= link_to "Items", items_url %>
+							<%= link_to "Users", users_url %>
+							<%= link_to "Categories", categories_url %>
+							<%= link_to "Ownership Status", ownerships_url %>
+							<%= link_to "Provinces and States", provinces_url %>
+					</div>
+				</td>
+							
+			<% end %> 
+	
+		</tr>
+	</table>
 </div>
 
   

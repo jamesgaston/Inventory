@@ -14,15 +14,14 @@
 	<%= render 'layouts/footer' %>
 
 	<% flash.each do |key, value| %>
-			<div class="<%= key %>"><%= value %></div>  
+			<div class="<%= key %>"><%= key.capitalize %>: <%= value %></div>  
 	<% end %>
 
 	<% if Rails.env.development? %>	
 			<div id="debug" ><%= debug(params) %></div>
 			<% if @current_user.nil? == false %>			
-            <%= @current_user.id %>    				
+            user <%= @current_user.id %>    				
 				<%= @current_user.email %>
-				<%= " ADMIN" if admin(@current_user) %>
 			<% end %> 	  
 	<% end %>
 

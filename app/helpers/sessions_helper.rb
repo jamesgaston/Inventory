@@ -47,22 +47,14 @@ def sign_out
 	self.current_user = nil
 end
 
-# method signed_in
-#
-# a user is signed in of current_user is not nil 
-def admin(user)
-	if signed_in?
-		if true
-	   	return true
-		end	
+def signed_in_as_admin
+	if !current_user.nil? 
+		return User.find(current_user).isadmin
+	else
+		return false	
 	end
-	return false 
 end
-
-def user_type(user)
-
-end
-
+	
 
 
 private

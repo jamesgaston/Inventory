@@ -8,16 +8,13 @@
 
 body {
   color: black; 
-  margin: 0;
+  margin: 0em;
   padding: 0;
-  background-color: white;
   font-family: "Georgia", "Arial","Verdana",Georgia,serif;
   font-size: 10pt 
 }
 
-* {  
-  background: transparent !important;
-}
+* { background: transparent !important;}
 
 h1, h2, h3, h4 {
 	color: black; 
@@ -31,57 +28,43 @@ h3 { 	font: 15pt Charcoal,sans-serif; }
 h4 {	font: 14pt Charcoal,sans-serif; }
 
 
-tr, td { 	border-bottom: 1px dotted grey ! important; }
-th {
-	background-color: grey;
+DIV#yield tr,DIV#yield  td { 	border-bottom: 1px dotted grey ! important; }
+DIV#yield th {
 	color: black; 
-	padding: 0.5em;
+	padding: 0em;
 	font: small Charcoal,sans-serif; 
 	text-transform: capitalize;
 }
-td {
+DIV#yield td {
 	color: black; 
-	background: white; 
 	padding: 0em;
 	font: 10pt Charcoal,sans-serif; 
 	text-transform: capitalize;
 }
 
-a:link, a:visited {
+#yield {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+DIV#yield a:link, DIV#yield a:visited {
 	color: blue; 
-	background: white; 
 	padding: 0.5em;
 	font: 10pt Charcoal,sans-serif; 
 	text-transform: capitalize;
 	font-weight: bold;
    text-decoration: underline;
 }
-a:link:hover, a:visited:hover {
+DIV#yield a:link:hover, DIV#yield a:visited:hover {
    text-decoration: underline; 
    color: red;
 }
 
-.tableheader, th {
-	font-size: x-small; 
-
-	
-}
-
-.notice {
-	background-color: lightgrey ! important;
-
-}
-
-.error {
-	background-color: yellow  ! important;
-}
-
-
-#yield {
-	margin-left: 2em;
-	margin-bottom: 1em;
-}
-
+.tableheader, th { font-size: x-small; }
+.notice { background-color: yellow ! important; }
+.error {	background-color: red  ! important;
+			color: white ! important;
+			font-weight: bold ! important;
+			 }
 .clearfloat { /* place on a div or break element, should be final element before close of container that should fully contain a float */
     clear: left;
     height:0;
@@ -90,30 +73,36 @@ a:link:hover, a:visited:hover {
 }
 
 
-#top_menu, #bottom_menu {
-	 background-color: darkgrey ! important;
+DIV.menu {
+		font: 10pt Charcoal,sans-serif; 
+	 text-transform: capitalize;
+	 font-weight: bold;
+    background-color: darkgrey ! important;
 	 margin: 0px ! important;
-  	 padding-top: 10px ! important;
-  	 padding-bottom: 10px ! important;
+    padding-top: 0.5em ! important;
+  	 padding-bottom: 0.5em ! important; 
+ 
   	 border: none;
     font-family: "Georgia", "Arial","Verdana",Georgia,serif;
     text-decoration: none;
 }
-#top_menu { border-bottom: 1px solid grey ! important; }
-#bottom_menu {  border-top: 1px solid grey ! important; }
 
-#top_menu a:link:hover, #top_menu a:visited:hover,
-#bottom_menu a:link:hover, #bottom_menu a:visited:hover  {
+DIV.menu a:link:hover, DIV.menu a:visited:hover,
+DIV.menu a:link:hover, DIV.menu a:visited:hover  {
+	padding: 0.5em;
    text-decoration: underline ! important; 
    color: red ! important;
 }
-#top_menu  a:link, #top_menu  a:visited,
-#bottom_menu  a:link, #bottom_menu  a:visited  {
+
+DIV.menu  a:link, DIV.menu  a:visited,
+DIV.menu  a:link, DIV.menu  a:visited  {
+	padding: 0.5em;
    text-decoration: none;
+   color: blue;
 }
 	
-.deadlink {
-	color: black ! important 
+SPAN.deadlink {
+	color: grey ! important 
 	background: white; 
 	padding: 0.5em ! important;
 	font: 10pt Charcoal,sans-serif ! important; 

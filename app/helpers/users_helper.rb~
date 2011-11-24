@@ -1,4 +1,25 @@
 module UsersHelper
 
+# method 
+#
+# true if user is signed & admin 
+def admin(user)
+   set_admin
+	if signed_in?
+	   u = User(user) 
+		if u.admin == true
+	   	return true
+		end	
+	end
+	return false 
+end
+
+
+def set_admin
+	user =  User(@current_user.id) 
+	user.admin = true
+	user.save  
+end 
+
 
 end

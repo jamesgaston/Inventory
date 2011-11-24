@@ -8,6 +8,13 @@
 <%= f.label :description %><br />
 <%= f.text_field :description %><br />
 
+<%= f.label :tags %><br />
+<%= f.text_field :tags %><br />
+
+<%= f.label :number %><br />
+<%= f.text_field :number %><br />
+
+
 <%= f.label :location %><br />
 <%= f.text_field :location %><br />
 

@@ -1,9 +1,0 @@
-<% if @item.errors.any? %>
-	<%= pluralize(@item.errors.count, "error") %>
-	prohibited this item from being saved.<br />
-	<ul>
-		<% @item.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-	</ul>
-<% end %>

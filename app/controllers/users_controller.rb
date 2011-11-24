@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-	before_filter :set_context 
 
   def new
       before_user_edit
-		@user = User.new(:user_type => 0)  
+		@user = User.new
   end
 
   def edit
@@ -19,7 +18,6 @@ class UsersController < ApplicationController
 
   def index
   	@users = User.order("email ASC")
-  	@context = "admin"
   end
 
     # method  create   	
@@ -61,11 +59,15 @@ class UsersController < ApplicationController
 	end
  end
 
+
+
+
+
+
   def useradmin
   		if admin(@current_user) == false 
  		  redirect_to home_url 		
   		end
-  		@context = "admin" 
   end
 
 
@@ -77,16 +79,12 @@ class UsersController < ApplicationController
 	     # if the method has some important context info, it will be set there
 	     # alternatively we could set it to some default value 
 	      
-	def set_context
-		@context = "" 
-	end
 
 		  # call this before any new item or edit item call
 		  # as we need to populate the lookup tables and set the context  
 	def before_user_edit
 	   @provinces = Province.ordered 
-   	@context = "edit"
-  end
+   end
 
 
 

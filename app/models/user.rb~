@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
 
 		# create a virtual password attribute 
 	attr_accessor :password
-   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone
+   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone, :admin 
+   
    
 	has_many :items
 	belongs_to :province
@@ -34,6 +35,9 @@ class User < ActiveRecord::Base
 		return user if user.has_password?(submitted_password)
 	end
 	
+	def isadmin
+		return self.admin == true ? true : false;
+	end 
 	
 	# method authenticate_with_salt()
 	#

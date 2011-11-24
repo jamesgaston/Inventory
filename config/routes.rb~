@@ -1,5 +1,5 @@
 Inventory1::Application.routes.draw do
-  
+
   resources :ownerships 
   resources :sessions, :only =>[:new, :create, :destroy]
   resources :categories  
@@ -14,8 +14,7 @@ Inventory1::Application.routes.draw do
   match '/help', :to => 'pages#help'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-  match '/home', :to => 'pages#home', :as "home" 
-
+  match '/signup', :to => 'users#new', :as 'signup' 
   match '/admin', :to => 'users#useradmin', :as => "admin" 
   
 # routing for home page      

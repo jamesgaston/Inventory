@@ -10,24 +10,31 @@
 	<th>Where is it</th>
    <th>Its a type of</th>
    <th></th>
+
 </tr>
+
 <% counter = 0 %>
 <% for i in @items %>
-<tr>
-	<td><%= counter = counter + 1 %>.</td>
-	<td><%= link_to i.name, {:controller=>"items", :action=>"edit", :id=>i.id},{:title => "Edit Item"} %>
-   <% if @show_owner %>
-		  <%= "**mine**" if @current_user.id == i.user_id %> 
- 	<% end %> 
+ 	<tr>
+ 
+	<td><%= counter = counter + 1 %>.
 	
+	<% if @current_user.id == i.user_id %>
+	 		<%= image_tag "red-check.gif" %> 
+ 	<% end %>
+ 	
 	</td>
+	<td><%= link_to i.name, {:controller=>"items", :action=>"edit", :id=>i.id},{:title => "Edit Item"} %></td>
+	
    <% if @show_owner %>
- 		  <td align='right'>
- 		  <%= i.user_id.to_s %>
- 		  </td> 
+   
+	   <td align='right'>
+				  <%= i.user_id.to_s %>
+     	</td>
+    
    <% end %> 
       
-    <%= raw("<td align='right' >" + i.user_id.to_s + "</td>") if @show_owner %>
+ 
 	<td><%= button_to "Delete", {:action => "destroy", :id =>i.id}, 
 	        :confirm => "Are you sure?", :method => :delete %>
    </td>
@@ -39,3 +46,6 @@
 <% end %>
 </table>
 <br />
+<% if @show_owner %>
+	<%= image_tag "red-check.gif" %>my inventory
+<% end %> 

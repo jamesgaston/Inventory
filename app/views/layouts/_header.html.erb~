@@ -1,52 +1,33 @@
-<div id="top_menu" class="menu">
-	<% if signed_in? %>
+<div id="top_menu" class="menu" style="border:0px solid black;">
+	<table style="width: 100%;">
+		<tr>
+			<td style="text-align: left; width=50%;">
+
+				<% if signed_in? %>
+					
+					<%= link_to "My Inventory", items_url %>
+					<%= link_to "Help", help_url %>			
+			  
+			   <% else %>
+					<span class="deadlink">My Inventory<span> 
+
+					<%= link_to "Sign In ", signin_path %> 
 	
-		<div class="menu" style="float: left; width: 49%;" >
 
-	   	<% if @context.nil? || (@context != "edit") %>
-		   	<%= link_to "My Inventory", items_url if @context.nil? || (@context != "inventory")%>  
- 		   	<%= raw('<span class="deadlink">My Inventory<span>') if (@context.nil? == false) && (@context == "inventory")%>  
-   			<%= link_to "Search", help_url %> 
-     			<%= link_to "Help", help_url %>
-     			<% if admin(@current_user) == true %>
-					<% if (@context.nil? == false) &&(@context == "admin") %>
-					<% else %>      				
-     					<%= link_to "Admin", admin_url %>
-     				<% end %> 
-     			<% end %>
-     		<% else %>
-				<span class="deadlink">My Inventory<span> 
-				<span class="deadlink">Search<span> 
-				<span class="deadlink">Help<span>     		
-     		<% end %> 
-   	</div> 
-   	
-   	<div  class="menu" style="float: right; width: 49%; text-align: right;">
-	   	<% if @context.nil? || (@context != "edit") %>
-				<%= link_to "Sign Out ", signout_path, :method => :delete %> 
-		   	<%= link_to @current_user.email, edit_user_url(@current_user.id) %>
-    		<% else %>
-				<span class="deadlink">Sign Out<span> 
-				<span class="deadlink"><%= @current_user.email %><span> 
-     		<% end %> 
-		</div>
+   		
 
-  <% else %>
+	     		<% end %> 
 
-		<div class="menu" style="float: left;" >
-	   	<% if @context.nil? || (@context != "edit") %>
-				<%= link_to "My Inventory", root_url %> 
-				<%= link_to "Sign In", new_session_url %> 
-				<%= link_to "Sign Up", new_user_url %>  
-   		<% else %>
-				<span class="deadlink">My Inventory<span> 
-				<span class="deadlink">Sign In<span> 
-				<span class="deadlink">Sign Up<span> 
-     		<% end %> 
-		</div>
 
-	<% end %>
+			</td> 
+      	<td style="text-align: right; width: 50%;"> 	
 
-	<div class="clearfloat"></div>
-
+				<% if signed_in? %>
+					<%= link_to "Sign Out ", signout_path, :method => :delete %> 
+			   	<%= link_to current_user.email, edit_user_url(@current_user.id) %>
+				<% end %> 
+				
+			</td>
+		</tr>
+	</table>
 </div>

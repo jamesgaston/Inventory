@@ -2,7 +2,7 @@
 
 	<div style="float: left; padding-right: 5em;">
 
-	<%= render 'users/shared/user_error_messages' %>
+	<%= render 'shared/error_messages', :object => f.object %>
 
 	<%= raw("<h2>" + "Login Information" + "</h2>") if context == "edit"  %>  
 	<%= f.label :email %> 
@@ -22,15 +22,11 @@
 	<br />
 	<%= f.password_field :password_confirmation %><br />
 	
-	<% if admin(@current_user) == true %>
-		<%= f.label :user_type %> 
-		<%= "(Required)" if context == "edit"  %>
-		<br /> 
-		<%= f.text_field :user_type %><br />
-   	0-enrolled, 1-paid, 2-admin
+	<% if signed_in_as_admin %>
+
+		<%= f.label :admin %> 
+		<%= f.check_box :admin %><br />
 	
-	<% else %>
-		 <%= f.hidden_field :user_type %>	
 	<% end %>
 	
 	</div> 

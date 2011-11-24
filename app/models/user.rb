@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
 		# create a virtual password attribute 
 	attr_accessor :password
-   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone, :user_type
+   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone, :admin 
    
    
 	has_many :items
@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	
-	validates :user_type, :presence => true
 	validates :email, :presence => true,
 					:format => {:with => email_regex },
 					:uniqueness => { :case_sensitive => false}
@@ -36,6 +35,9 @@ class User < ActiveRecord::Base
 		return user if user.has_password?(submitted_password)
 	end
 	
+	def isadmin
+		return self.admin == true ? true : false;
+	end 
 	
 	# method authenticate_with_salt()
 	#
