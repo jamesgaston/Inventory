@@ -1,4 +1,6 @@
 class ProvincesController < ApplicationController
+
+
   def show
   end
 

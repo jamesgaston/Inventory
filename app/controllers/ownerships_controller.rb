@@ -1,4 +1,6 @@
 class OwnershipsController < ApplicationController
+
+
   def edit
  	 @ownership = Ownership.find_by_id( params[:id] )
   end

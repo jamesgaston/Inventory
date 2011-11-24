@@ -49,8 +49,7 @@ end
 
 def signed_in_as_admin
 	if !current_user.nil? 
-		user = User.find(current_user)
-		return user.isadmin 
+		return User.find(current_user).isadmin
 	else
 		return false	
 	end

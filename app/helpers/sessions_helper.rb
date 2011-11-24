@@ -11,7 +11,8 @@ def sign_in(user)
 		# signed makes the cookie secure, user id isn't exposed
 	cookies.permanent.signed[:remember_token] = [user.id, user.salt]
 	
-		# create instance variable current_user, which is accessible in controllers and views
+		# create instance variable current_user, 
+		# which is accessible in controllers and views
 	self.current_user = user
 end
 
@@ -20,6 +21,7 @@ end
 # 	
 # set an instance variable to store the current user 
 # called by sign_in()
+# defines a setter on the current_user instance 
 def current_user=(user)
 	@current_user = user 
 end

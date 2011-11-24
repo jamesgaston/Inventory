@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	
 
   def new
       before_user_edit
@@ -11,6 +12,15 @@ class UsersController < ApplicationController
  end
 
   def destroy
+  	@user = User.find_by_id( params[:id] )
+  	items = Item.find_by_user_id(@user.id) 
+  	for i in items 
+  		i.destroy 
+  	end
+  		
+	@user.destroy
+	flash[:notice] = "User #{@user.email} was successfully deleted."
+	redirect_to( :controller => 'users', :action => 'index' )
   end
 
   def show

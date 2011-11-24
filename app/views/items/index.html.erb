@@ -29,7 +29,10 @@
    <% if @show_owner %>
    
 	   <td align='left'>
-	          <%= link_to i.email.truncate(15, :omission =>"..."), {:controller=>"users", :action=>"edit", :id=>i.user_id},{:title => "Edit User"} %>
+	                          <!-- in case item left dangling ... --> 
+	   		 <% if User.find_by_id(i.user_id) %> 
+		          <%= link_to i.email.truncate(15, :omission =>"..."), {:controller=>"users", :action=>"edit", :id=>i.user_id},{:title => "Edit User"} %>
+				 <% end %> 
     	</td>
     
    <% end %> 
