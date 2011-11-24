@@ -22,7 +22,7 @@ class CategoriesController < ApplicationController
 			render :action => 'new' 
 		end
 	  else
-	     redirect_to( :controller => 'items', :action => 'index' )
+	     redirect_to( :controller => 'categories', :action => 'index' )
 	  end		  
   end
 

@@ -1,2 +1,4 @@
-<h1>Ownerships#index</h1>
-<p>Find me in app/views/ownerships/index.html.erb</p>
+<h1>Ownerships</h1>
+<% for o in @ownerships %>
+	<%= o.name %><br />
+<% end %> 

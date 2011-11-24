@@ -1,10 +1,10 @@
-<%= form_for(@category) do |f| %>
+<%= form_for(@ownership) do |f| %>
 	<%= render 'shared/error_messages', :object => f.object %>
 	<%= f.label :name %><br />
 	<%= f.text_field :name %><br />
 	<br />
-	<%= f.submit "Save Category" %><br /><br />
-	<%= submit_tag "Cancel", { :name => "category[Cancel]" } %>
+	<%= f.submit "Save Ownership" %><br /><br />
+	<%= submit_tag "Cancel", { :name => "ownership[Cancel]" } %>
 <% end %>
 
 <br />

@@ -1,4 +1,6 @@
 <h1>Ownerships</h1>
 <% for o in @ownerships %>
-	<%= o.name %><br />
+	<%= link_to o.name, {:controller=>"ownerships", :action=>"edit", :id=>o.id},
+	 {:title => "Edit Ownership"} %><br/>
 <% end %> 
+<%= link_to "+New", new_ownership_url, {:title => "Add a new ownership"} %>
