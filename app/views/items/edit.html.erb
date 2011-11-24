@@ -1,2 +1,5 @@
-<h3>Edit Item</h3>
+<h3>Edit Inventory</h3>
+<% if @item_owner != "" %>
+	Owned by <%= @item_owner %><br /><br />
+<% end %>
 <%= render 'items/shared/edit_item' %>

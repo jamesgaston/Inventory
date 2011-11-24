@@ -28,9 +28,9 @@
 	
    <% if @show_owner %>
    
-	   <td align='right'>
-				  <%= i.user_id.to_s %>
-     	</td>
+	   <td align='left'>
+	          <%= link_to i.email.truncate(15, :omission =>"..."), {:controller=>"users", :action=>"edit", :id=>i.user_id},{:title => "Edit User"} %>
+    	</td>
     
    <% end %> 
       

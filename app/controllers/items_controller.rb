@@ -4,14 +4,21 @@ class ItemsController < ApplicationController
    
   def new
    before_item_edit
-   user = current_user
+   @user = current_user
 	@item = Item.new 
-	@item.user_id = user.id
+	@item.user_id = @user.id
   end
 
   def edit
    before_item_edit
 	@item = Item.find_by_id( params[:id] )
+	item_owner = User.find_by_id( @item.user_id )
+	if( item_owner != current_user )
+		@item_owner = item_owner.email
+	else
+		@item_owner = "" 		
+	end  
+	
   end
 
   def destroy

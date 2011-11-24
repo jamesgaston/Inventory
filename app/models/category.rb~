@@ -1,9 +1,7 @@
 class Category < ActiveRecord::Base
 	has_many :items
-	
-	
-	def self.ordered
-		order("name")
-	end
-		
+	scope :ordered, order("name")
+
+	validates :name, :presence => true,
+				:uniqueness => { :case_sensitive => false}		
 end

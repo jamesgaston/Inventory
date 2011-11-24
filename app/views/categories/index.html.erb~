@@ -1,2 +1,5 @@
 <h1>Categories</h1>
-
+<% for c in @categories %>
+	<%= link_to c.name, {:controller=>"categories", :action=>"edit", :id=>c.id},
+	 {:title => "Edit Category"} %><br/>
+<% end %> 
