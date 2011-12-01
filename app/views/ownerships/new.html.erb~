@@ -1,2 +1,2 @@
-<h1>New Category</h1>
-<%= render 'ownerships/shared/edit_category' %>
+<h1>New Ownership</h1>
+<%= render 'ownerships/shared/edit_ownership' %>

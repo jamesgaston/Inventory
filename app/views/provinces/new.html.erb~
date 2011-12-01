@@ -1,0 +1,6 @@
+<% content_for :title do %>
+  New Provinces
+<% end %>
+
+<h1>Provinces#new</h1>
+

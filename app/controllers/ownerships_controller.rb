@@ -3,10 +3,12 @@ class OwnershipsController < ApplicationController
 
   def edit
  	 @ownership = Ownership.find_by_id( params[:id] )
+	render :layout => 'form'
   end
 
   def new
   	@ownership = Ownership.new 
+  	render :layout => 'form'
   end
 
   def create
@@ -18,7 +20,7 @@ class OwnershipsController < ApplicationController
 		else
 
 			flash.now[:error] = "Ownership could not be created."
-			render :action => 'new' 
+			render :layout => 'form',  :action => 'new' 
 		end
 	  else
 	     redirect_to( :controller => 'ownerships', :action => 'index' )
@@ -33,7 +35,7 @@ class OwnershipsController < ApplicationController
 		 		redirect_to( :controller => 'ownerships', :action => 'index' )
 			else
   				flash.now[:error] = "Ownership could not be updated."
-				render :action => 'edit'
+  				render :layout => 'form', :action => 'edit'
 			end	
 	  else
 	     redirect_to( :controller => 'items', :action => 'index' )
@@ -49,7 +51,7 @@ class OwnershipsController < ApplicationController
   end
 
  def index
-    @ownerships = Ownership.order("name") 
+    @ownerships = Ownership.order("id") 
   end
 
 

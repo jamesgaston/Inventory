@@ -1,2 +1,2 @@
-<h1>Ownerships#edit</h1>
-<p>Find me in app/views/ownerships/edit.html.erb</p>
+<h1>Edit Ownership</h1>
+<%= render 'ownerships/shared/edit_ownership' %>

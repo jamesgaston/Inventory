@@ -1,0 +1,91 @@
+<% content_for :title do %>
+  <%= @item.name %> 
+<% end %>
+
+<h1><%= @item.name %></h1> 
+
+
+<div class="list">
+
+	<table>
+		<tr>
+			<td width=15%> 
+				  
+					<%= @item_ownership %>
+					<br /><br/>
+					<div class="trace">Item ID: <%= @item.id %></div> 
+				   <%= link_to " < ", {:controller=>"items", :action=>"show", :id=> prev_item(@item.id) } %>	
+					&nbsp;&bull;&nbsp;
+					<%= link_to "Edit", {:controller=>"items", :action=>"edit", :id=>@item.id},{:title => "Edit Item"} %>
+               &nbsp;&bull;&nbsp;
+					<%= link_to " > ", {:controller=>"items", :action=>"show", :id=> next_item(@item.id) } %>	
+					
+			</td>
+			<td>
+					<%= @item_category %><br />
+					Count <%= @item.number.to_s %><br />
+					Located in <%= @item.location %><br />
+			</td>
+			<td>
+					<%= @item.description %><br />
+					<%= @item.tags %><br />
+ 			</td>
+ 		</tr>
+ 	</table>
+ 	
+</div>
+
+<% if @samename_items_count > 0   %>
+
+   <div class="smallborder">
+
+				<% for i in @samename_items %>
+			     <% @item_for_sale = which_is_for_sale(@item.id, i.id) %>
+			     
+			     <div class="listhighlight">
+				     <%= first_name(i.user_id) %>  
+   	 				(<%= city(i.user_id) %>, 		
+	   				<%= province_abbr(i.user_id) %>)
+						<%= get_ownership(i) %>		
+						a <%= i.name %> 
+ 				  </div> 
+				
+				<% find_sameitem_messages(@item_for_sale, i.user_id) %>
+				<% if @sameitem_messages && (@sameitem_messages.size > 0) %>
+				 
+					<% for m in  @sameitem_messages %>
+					   <div class="padded">
+																				 
+ 							 <% if m.sender_id == @current_user.id %>
+							   	I said to <%= first_name( m.recipient_id ) %> -  
+							 <% else %>
+							     <%= first_name( m.sender_id ) %> says: 
+							 <% end %>
+							 
+							
+							<strong><%= m.message_text %></strong>
+ 							<span class="smalldimtext">							
+							<%= m.created_at.strftime("%A, %d %h %Y, %I:%M %p") %>
+							</span> 
+						</div>
+						
+					<% end %>	
+				<% end %>
+			   
+			   	   <% @recipient_name = first_name(i.user_id) %>
+			   	   <% new_message = Message.new(
+			   	   				:sender_id => @item.user_id, 
+			   	   				:recipient_id => i.user_id, 
+			   	   				:item_id => @item_for_sale,
+			   	   				:show_email => false ) %>
+			   	   <div class="padded">				
+						<%= render 'messages/shared/new_message', :object => new_message %>
+						</div> 
+			<% end %> <!-- for i in @samename_items --> 
+
+		</div> 
+		
+	<% end %><!-- if @samename_items_count > 0 -->  
+
+
+

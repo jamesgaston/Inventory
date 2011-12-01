@@ -6,10 +6,12 @@ class CategoriesController < ApplicationController
 
   def edit
  	 @category = Category.find_by_id( params[:id] )
+ 	 render :layout => 'form'
   end
 
   def new
   	@category = Category.new 
+  	render :layout => 'form'
   end
 
   def create
@@ -21,7 +23,7 @@ class CategoriesController < ApplicationController
 		else
 
 			flash.now[:error] = "Category could not be created."
-			render :action => 'new' 
+			render :layout => 'form', :action => 'new' 
 		end
 	  else
 	     redirect_to( :controller => 'categories', :action => 'index' )
@@ -36,7 +38,7 @@ class CategoriesController < ApplicationController
 		 		redirect_to( :controller => 'categories', :action => 'index' )
 			else
   				flash.now[:error] = "Category could not be updated."
-				render :action => 'edit'
+  				render :layout => 'form',  :action => 'edit'
 			end	
 	  else
 	     redirect_to( :controller => 'items', :action => 'index' )

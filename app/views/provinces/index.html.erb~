@@ -1,4 +1,6 @@
-<h1>Provinces#index</h1>
+ 
+
+<h1>Provinces and States</h1>
 <table width="100%">
 <% for p in @provinces %>
 	<tr>  

@@ -1,11 +1,12 @@
 <table width="100%">
  <tr class="tableheader">
    <th>&nbsp;</th>
-	<th>Email <%= link_to "+New", new_user_url, {:title => "Add a new user"} %></th>
-   <th>&nbsp;</th>
+	<th align='left' >Email <%= link_to "+New", new_user_url, {:title => "Add a new user"} %></th>
+   <th>Role</th>
    <th>ID</th>
    <th>Joined</th>
-   <th>Delete?</th>
+   <th>Items</th> 
+   <th> </th>
    <th>Last</th>
    <th>First </th>
    <th>City</th>
@@ -15,12 +16,13 @@
 <% for u in @users %>
 <tr>
 	<td><%= counter = counter + 1 %>.</td>
-	<td><%= link_to u.email, {:controller=>"users", :action=>"edit", :id=>u.id},{:title => "Edit User"} %>
+	<td><%= link_to u.email, {:controller=>"users", :action=>"show", :id=>u.id},{:title => "Show User"} %>
 		 <%= "** me **" if current_user.id == u.id %>  	
 	</td>
-	<td><%= "admin" if u.isadmin == true%> </td>
+	<td><%= "admin" if u.isadmin == true %> </td>
    <td align='right' ><%= u.id.to_s %></td>
    <td align='center' ><%= u.created_at.strftime("%b %e, %Y") %></td>
+   <td align='center' ><%= num_items(u.id) %></td>
 	<td><%= button_to "Delete", {:action => "destroy", :controller => "users", :id =>u.id}, 
 	        :confirm => "Are you sure?", :method => :delete %>
    </td>

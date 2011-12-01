@@ -1,24 +1,26 @@
 class ItemsController < ApplicationController
-	
- 
+	before_filter :get_lookups, :only => [:new, :edit, :update, :create] 
+   include ItemsHelper
+   
    
   def new
-   before_item_edit
    @user = current_user
-	@item = Item.new 
+	@item = Item.new(:number => 1) 
 	@item.user_id = @user.id
+	render :layout => 'form'
   end
 
   def edit
-   before_item_edit
-	@item = Item.find_by_id( params[:id] )
+   @item = Item.find_by_id( params[:id] )
+
+		# Ugly: the rest is 'cause I want to indicate the owner assuming we are admin mode ... 
 	item_owner = User.find_by_id( @item.user_id )
 	if( item_owner != current_user )
 		@item_owner = item_owner.email
 	else
 		@item_owner = "" 		
 	end  
-	
+	render :layout => 'form'
   end
 
   def destroy
@@ -30,6 +32,11 @@ class ItemsController < ApplicationController
 
 
   def show
+   ## @current_user = current_user  
+   @item = Item.find_by_id( params[:id] )
+ 	@item_ownership = @item.ownership_id.nil? ?  "" :  Ownership.find_by_id(@item.ownership_id).name
+	@item_category = @item.category_id.nil? ? "" : Category.find_by_id(@item.category_id).name
+	find_samename_items(@item) 
   end
 
   def index
@@ -50,9 +57,8 @@ class ItemsController < ApplicationController
 			 flash[:notice] = "Item #{@item.name} was successfully created."
 		 	redirect_to( :controller => 'items', :action => 'index' )
 		else
- 		   before_item_edit
 			flash.now[:error] = "Item could not be created."
-			render :action => 'new' 
+			render :layout => 'form', :action => 'new' 
 		end
 	  else
 	     redirect_to( :controller => 'items', :action => 'index' )
@@ -60,25 +66,25 @@ class ItemsController < ApplicationController
   end
 
   def update
+ 	  @item = Item.find_by_id(params[:id])
 	  if !params[:item].include?( 'Cancel' )
-			@item = Item.find_by_id(params[:id])
+			
 			if @item.update_attributes(params[:item])
 				flash[:notice] = "Item #{@item.name} was successfully updated."
-		 		redirect_to( :controller => 'items', :action => 'index' )
+		 		redirect_to( :controller => 'items', :action => 'show', :id => @item.id )
 			else
-			   before_item_edit
 				flash.now[:error] = "Item could not be updated."
-				render :action => 'edit'
+				render :layout => 'form', :action => 'edit'
 			end	
 	  else
-	     redirect_to( :controller => 'items', :action => 'index' )
+	     redirect_to( :controller => 'items', :action => 'show', :id => @item.id )
 	  end		
   end
 
-	protected
-		  # call this before any new item or edit item call
-		  # as we need to populate the lookup tables and set the context  
-	def before_item_edit
+	private
+
+		  # populate the lookup tables  
+	def get_lookups
 	   @categories = Category.ordered 
 		@ownerships = Ownership.ordered
   end

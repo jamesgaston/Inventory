@@ -1,0 +1,3 @@
+<% flash.each do |key, value| %>
+			<div class="<%= key %>"><%= key.capitalize %>: <%= value %></div>  
+<% end %>

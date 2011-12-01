@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= yield (:title) || "My Inventory" %></title> 
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	 <%= render :partial => 'layouts/header_no_menu' %>
+
+	<div id="yield">
+	
+	<%= yield %>
+	
+	</div>
+
+	<%= render 'layouts/footer_no_menu' %>
+
+	<% flash.each do |key, value| %>
+			<div class="<%=  key %>"><%= key.capitalize %>: <%= value %></div>  
+	<% end %>
+
+	<% if Rails.env.development? %>	
+			<div id="debug" ><%= debug(params) %></div>
+			<% if @current_user.nil? == false %>
+				<%= "admin " if @current_user.admin %> 			
+            user <%= @current_user.id %>    				
+				<%= @current_user.email %>
+			<% end %> 	  
+	<% end %>
+
+</body>
+</html>

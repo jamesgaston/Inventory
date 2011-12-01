@@ -1,0 +1,15 @@
+<%= form_for(object, :action=>"create") do |f| %>
+
+<%= render 'shared/error_messages', :object => f.object %>
+
+I say to <%= @recipient_name %>: 
+<%= f.text_field :message_text, :size => 65 %>
+<%= f.submit "Send" %>
+ 
+  
+<%= f.hidden_field :sender_id %>
+<%= f.hidden_field :recipient_id %>
+<%= f.hidden_field :item_id %>
+<%= f.hidden_field :show_email %> 
+<% end %>
+<br />

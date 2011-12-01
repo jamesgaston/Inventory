@@ -1,25 +1,33 @@
 module UsersHelper
 
-# method 
-#
-# true if user is signed & admin 
-def admin(user)
-   set_admin
-	if signed_in?
-	   u = User(user) 
-		if u.admin == true
-	   	return true
-		end	
-	end
-	return false 
+def num_items(user_id)
+		items = Item.find_all_by_user_id(user_id) 
+		return items.size 
 end
 
+def first_name(user_id)
+	if User.find_by_id(user_id).first_name.blank? 
+		return "Anonymous"
+	else
+		return User.find_by_id(user_id).first_name
+	end
+end
 
-def set_admin
-	user =  User(@current_user.id) 
-	user.admin = true
-	user.save  
-end 
+def city(user_id)
+	if User.find_by_id(user_id).city.blank? 
+		return ""
+	else
+		return User.find_by_id(user_id).city
+	end
+end
+
+def province(user_id)
+	if User.find_by_id(user_id).province.blank? 
+		return ""
+	else
+		return User.find_by_id(user_id).province.name
+	end
+end
 
 
 end

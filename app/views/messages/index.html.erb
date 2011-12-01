@@ -1,0 +1,54 @@
+<% content_for :title do %>
+    Messages
+<% end %>
+
+<h1>Messages Received</h1>
+<div class="list"> 
+<table>
+<% for m in @messages_received %>
+	<tr>
+	
+	<td><span class="smalldimtext">	
+		<%= m.created_at.strftime("%A, %d %h %Y, %I:%M %p")%> 
+		</span>		
+		</td>
+	<td><%= link_to first_name(m.sender_id), :controller=>"messages", :action => "new",
+	           :sender_id => m.recipient_id, :recipient_id => m.sender_id, :item_id => m.item_id %></td>
+	<td><%= item_name(m.item_id) %></td>
+	<td><%= m.message_text %></td>
+   <td><%= button_to "Delete", {:controller =>"messages", 
+           :action => "destroy", :id =>m.id}, 
+	        :confirm => "Are you sure?", 
+	        :method => :delete %>
+	 </td>	
+	</tr>
+<% end %>
+</table>
+</div>
+
+
+<h1>Messages Sent</h1>
+<div class="list">
+
+<table>
+<% for m in @messages_sent %>
+	<tr>
+	<td><span class="smalldimtext">	
+		<%= m.created_at.strftime("%A, %d %h %Y, %I:%M %p")%> 
+		</span>		
+		</td>
+	<td><%= first_name(m.recipient_id) %>
+	</td>
+	<td><%= item_name(m.item_id) %></td>
+	<td><%= m.message_text %></td>
+   <td><%= button_to "Delete", {:controller =>"messages", 
+           :action => "destroy", :id =>m.id}, 
+	        :confirm => "Are you sure?", 
+	        :method => :delete %>
+	 </td>
+
+	</tr>
+<% end %>
+</table>
+</div>
+

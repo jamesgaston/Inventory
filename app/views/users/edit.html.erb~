@@ -1,2 +1,1 @@
-<h1>My Profile</h1>
 <%= render :partial => 'users/shared/edit_user', :locals => {:context => "edit" } %>

@@ -1,39 +1,46 @@
 class UsersController < ApplicationController
-	TO DO: add a before filter to limit destroy and index to admin
+	before_filter :get_lookups, :only => [:new, :edit, :update, :create] 
+	
 
   def new
-      before_user_edit
-		@user = User.new
+    	@user = User.new
+		render :layout => 'application_no_menu'
   end
 
   def edit
-     before_user_edit
-     @user = User.find(params[:id])
+      @user = User.find_by_id(params[:id])
+		render :layout => 'application_no_menu'
  end
 
   def destroy
   	@user = User.find_by_id( params[:id] )
-  	items = Item.find_by_user_id(@user.id) 
-  	for i in items 
-  		i.destroy 
-  	end
-  		
+  	items = Item.find_all_by_user_id(@user.id) 
+	items.each {|x| x.destroy }	
 	@user.destroy
-	flash[:notice] = "User #{@user.email} was successfully deleted."
+	flash[:notice] = "User #{@user.email} deleted."
 	redirect_to( :controller => 'users', :action => 'index' )
   end
 
   def show
+       @user = User.find_by_id(params[:id])
+       if @user.province_id.nil?
+       	@province = ""
+       	@country = ""
+     	 else
+   	    p = Province.find_by_id(@user.province_id)
+   	    @province = p.name  
+   	    @country = Country.find_by_id(p.country_id).name
+		end  
   end
 
   def index
   	@users = User.order("email ASC")
   end
 
-    # method  create   	
-    # create a new user  
+     	
+   
   def create
-    					# check that the user didn't press the cancel button
+   					# check that the user didn't press the cancel button
   if !params[:user].include?( 'Cancel' )
 		@user = User.new(params[:user])
 		if @user.save
@@ -41,18 +48,15 @@ class UsersController < ApplicationController
 			flash[:notice] = "User #{@user.email} was successfully created."
 			redirect_to( :controller => 'pages', :action => 'home' )
 		else
-         before_user_edit 
 			flash.now[:error] = "User could not be created."
-			render :action => 'new'
+			render :layout => 'application_no_menu',  :action => 'new'
 		end
 	else
 		redirect_to( :controller => 'pages', :action => 'home' )
 	end
   end
 
-
-	# method update
-	# update the user's info unless they pressed the cancel button   
+ 
   def update
    if !params[:user].include?( 'Cancel' )
 		@user = User.find_by_id(params[:id])
@@ -60,42 +64,19 @@ class UsersController < ApplicationController
 			flash[:notice] = "User #{@user.email} was successfully updated."
 		 	redirect_to( :controller => 'items', :action => 'index' )
 		else
-         before_user_edit
 			flash.now[:error] = "User could not be updated."
-			render :action => 'edit'
+			render :layout => 'application_no_menu', :action => 'edit'
 		end	
   	else
 		redirect_to( :controller => 'items', :action => 'index' )
 	end
  end
 
-
-
-
-
-
-  def useradmin
-  		if admin(@current_user) == false 
- 		  redirect_to home_url 		
-  		end
-  end
-
-
-	protected
+private
 	
-		  # 	
-		  # @context may contain info to guide whether menus are live 
-	     # clear out the context variable before each method call
-	     # if the method has some important context info, it will be set there
-	     # alternatively we could set it to some default value 
-	      
-
-		  # call this before any new item or edit item call
-		  # as we need to populate the lookup tables and set the context  
-	def before_user_edit
+             # populate the lookup table
+	def get_lookups
 	   @provinces = Province.ordered 
    end
-
-
 
 end

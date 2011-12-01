@@ -1,12 +1,14 @@
 class OwnershipsController < ApplicationController
-TO DO: add a before filter to limit edit, index and new methods to admin
+
 
   def edit
  	 @ownership = Ownership.find_by_id( params[:id] )
+	render :layout => 'form'
   end
 
   def new
   	@ownership = Ownership.new 
+  	render :layout => 'form'
   end
 
   def create
@@ -18,7 +20,7 @@ TO DO: add a before filter to limit edit, index and new methods to admin
 		else
 
 			flash.now[:error] = "Ownership could not be created."
-			render :action => 'new' 
+			render :layout => 'form',  :action => 'new' 
 		end
 	  else
 	     redirect_to( :controller => 'ownerships', :action => 'index' )
@@ -33,7 +35,7 @@ TO DO: add a before filter to limit edit, index and new methods to admin
 		 		redirect_to( :controller => 'ownerships', :action => 'index' )
 			else
   				flash.now[:error] = "Ownership could not be updated."
-				render :action => 'edit'
+  				render :layout => 'form', :action => 'edit'
 			end	
 	  else
 	     redirect_to( :controller => 'items', :action => 'index' )
