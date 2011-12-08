@@ -1,21 +1,19 @@
-<%= form_for(@message) do |f| %>
+<%= form_for(object, :action=>"create") do |f| %>
 
 <%= render 'shared/error_messages', :object => f.object %>
 
-<%= f.label :message_text %><br />
-<%= f.text_field :message_text %><br />
-<br />
-
-<%= f.label :show_email %> 
-<%= f.check_box :show_email %><br />
-
-<%= f.submit "Send Message" %><br /><br />
-<%= submit_tag "Cancel", { :name => "message[Cancel]" } %>
+<%= @item.first_name %>: 
+<%= f.text_field :message_text, :size => 65 %>
+<%= f.submit "Send" %>
+ 
   
-  
-<%= f.hidden_field :sender_id %>
-<%= f.hidden_field :recipient_id %>
-<%= f.hidden_field :item_id %>
+<%= f.hidden_field :seller_item_id %>
+<%= f.hidden_field :seller_user_id %>
+
+<%= f.hidden_field :buyer_item_id %>
+<%= f.hidden_field :buyer_user_id %>
+
+<%= f.hidden_field :sender_user_id %>
 
 <% end %>
 <br />

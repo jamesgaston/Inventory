@@ -69,6 +69,7 @@ def user_from_remember_token
 	User.authenticate_with_salt(*remember_token)
 end
 
+
 # method remember_token 
 #
 def remember_token
@@ -76,8 +77,7 @@ def remember_token
 		# cookies.signed returns an array of two elements, user id and salt
 		# but it is considered better to pass separate arguments to methods 
 		# rather than arrays of arguments
-		# 
-		# and return an array of nil, nil if cookies.signed is nil
+		# returns an array of nil, nil if cookies.signed is nil
 		
 	cookies.signed[:remember_token] || [nil,nil]
 end

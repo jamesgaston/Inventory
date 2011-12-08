@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: Owner
+  id: 1
 
 two:
-  name: MyString
+  name: Want to buy
+  id: 2
+
+three:
+  name: Want to Sell
+  id: 3

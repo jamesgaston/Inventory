@@ -10,8 +10,8 @@
 	 <%= render :partial => 'layouts/header_no_menu' %>
 
 	<div id="yield">
-	
-	<%= yield %>
+		
+		<%= yield %>
 	
 	</div>
 
@@ -21,14 +21,7 @@
 			<div class="<%=  key %>"><%= key.capitalize %>: <%= value %></div>  
 	<% end %>
 
-	<% if Rails.env.development? %>	
-			<div id="debug" ><%= debug(params) %></div>
-			<% if @current_user.nil? == false %>
-				<%= "admin " if @current_user.admin %> 			
-            user <%= @current_user.id %>    				
-				<%= @current_user.email %>
-			<% end %> 	  
-	<% end %>
-
+  <%= render 'layouts/debug' %>
+	  
 </body>
 </html>

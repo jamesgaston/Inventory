@@ -1,0 +1,61 @@
+james@ubuntu:~/inventory1$ rake routes
+      sessions POST   /sessions(.:format)            {:action=>"create", :controller=>"sessions"}
+  new_sessions GET    /sessions/new(.:format)        {:action=>"new", :controller=>"sessions"}
+               DELETE /sessions(.:format)            {:action=>"destroy", :controller=>"sessions"}
+         users GET    /users(.:format)               {:action=>"index", :controller=>"users"}
+               POST   /users(.:format)               {:action=>"create", :controller=>"users"}
+      new_user GET    /users/new(.:format)           {:action=>"new", :controller=>"users"}
+     edit_user GET    /users/:id/edit(.:format)      {:action=>"edit", :controller=>"users"}
+          user GET    /users/:id(.:format)           {:action=>"show", :controller=>"users"}
+               PUT    /users/:id(.:format)           {:action=>"update", :controller=>"users"}
+               DELETE /users/:id(.:format)           {:action=>"destroy", :controller=>"users"}
+         items GET    /items(.:format)               {:action=>"index", :controller=>"items"}
+               POST   /items(.:format)               {:action=>"create", :controller=>"items"}
+      new_item GET    /items/new(.:format)           {:action=>"new", :controller=>"items"}
+     edit_item GET    /items/:id/edit(.:format)      {:action=>"edit", :controller=>"items"}
+          item GET    /items/:id(.:format)           {:action=>"show", :controller=>"items"}
+               PUT    /items/:id(.:format)           {:action=>"update", :controller=>"items"}
+               DELETE /items/:id(.:format)           {:action=>"destroy", :controller=>"items"}
+    ownerships GET    /ownerships(.:format)          {:action=>"index", :controller=>"ownerships"}
+               POST   /ownerships(.:format)          {:action=>"create", :controller=>"ownerships"}
+ new_ownership GET    /ownerships/new(.:format)      {:action=>"new", :controller=>"ownerships"}
+edit_ownership GET    /ownerships/:id/edit(.:format) {:action=>"edit", :controller=>"ownerships"}
+     ownership GET    /ownerships/:id(.:format)      {:action=>"show", :controller=>"ownerships"}
+               PUT    /ownerships/:id(.:format)      {:action=>"update", :controller=>"ownerships"}
+               DELETE /ownerships/:id(.:format)      {:action=>"destroy", :controller=>"ownerships"}
+    categories GET    /categories(.:format)          {:action=>"index", :controller=>"categories"}
+               POST   /categories(.:format)          {:action=>"create", :controller=>"categories"}
+  new_category GET    /categories/new(.:format)      {:action=>"new", :controller=>"categories"}
+ edit_category GET    /categories/:id/edit(.:format) {:action=>"edit", :controller=>"categories"}
+      category GET    /categories/:id(.:format)      {:action=>"show", :controller=>"categories"}
+               PUT    /categories/:id(.:format)      {:action=>"update", :controller=>"categories"}
+               DELETE /categories/:id(.:format)      {:action=>"destroy", :controller=>"categories"}
+     provinces GET    /provinces(.:format)           {:action=>"index", :controller=>"provinces"}
+               POST   /provinces(.:format)           {:action=>"create", :controller=>"provinces"}
+  new_province GET    /provinces/new(.:format)       {:action=>"new", :controller=>"provinces"}
+ edit_province GET    /provinces/:id/edit(.:format)  {:action=>"edit", :controller=>"provinces"}
+      province GET    /provinces/:id(.:format)       {:action=>"show", :controller=>"provinces"}
+               PUT    /provinces/:id(.:format)       {:action=>"update", :controller=>"provinces"}
+               DELETE /provinces/:id(.:format)       {:action=>"destroy", :controller=>"provinces"}
+     countries GET    /countries(.:format)           {:action=>"index", :controller=>"countries"}
+               POST   /countries(.:format)           {:action=>"create", :controller=>"countries"}
+   new_country GET    /countries/new(.:format)       {:action=>"new", :controller=>"countries"}
+  edit_country GET    /countries/:id/edit(.:format)  {:action=>"edit", :controller=>"countries"}
+       country GET    /countries/:id(.:format)       {:action=>"show", :controller=>"countries"}
+               PUT    /countries/:id(.:format)       {:action=>"update", :controller=>"countries"}
+               DELETE /countries/:id(.:format)       {:action=>"destroy", :controller=>"countries"}
+      messages GET    /messages(.:format)            {:action=>"index", :controller=>"messages"}
+               POST   /messages(.:format)            {:action=>"create", :controller=>"messages"}
+   new_message GET    /messages/new(.:format)        {:action=>"new", :controller=>"messages"}
+  edit_message GET    /messages/:id/edit(.:format)   {:action=>"edit", :controller=>"messages"}
+       message GET    /messages/:id(.:format)        {:action=>"show", :controller=>"messages"}
+               PUT    /messages/:id(.:format)        {:action=>"update", :controller=>"messages"}
+               DELETE /messages/:id(.:format)        {:action=>"destroy", :controller=>"messages"}
+       contact        /contact(.:format)             {:controller=>"pages", :action=>"contact"}
+         about        /about(.:format)               {:controller=>"pages", :action=>"about"}
+          help        /help(.:format)                {:controller=>"pages", :action=>"help"}
+        signin        /signin(.:format)              {:controller=>"sessions", :action=>"new"}
+       signout        /signout(.:format)             {:controller=>"sessions", :action=>"destroy"}
+        signup        /signup(.:format)              {:controller=>"users", :action=>"new"}
+         admin        /admin(.:format)               {:controller=>"users", :action=>"useradmin"}
+          root        /                              {:controller=>"pages", :action=>"home"}

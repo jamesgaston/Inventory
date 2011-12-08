@@ -38,6 +38,11 @@ tr, td {
 	vertical-align: top;
 }
 
+.label {
+	font-size: x-small;
+	color: grey;
+}
+
 DIV#yield th {
 	color: black; 
 	padding: 0em;
@@ -76,7 +81,7 @@ span.smalldimtext {
 
 div.trace, span.trace {
 	color: grey;
-	display: none; 
+	display: none;  
 }
 TR.list TH {
 	
@@ -103,7 +108,7 @@ DIV#yield a:link:hover, DIV#yield a:visited:hover {
 }
 
 .tableheader, th { font-size: x-small; }
-.notice { background-color: yellow ! important; }
+.notice { background-color: white ! important; }
 .error {	background-color: red  ! important;
 			color: white ! important;
 			font-weight: bold ! important;

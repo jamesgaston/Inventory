@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
+  name: Refrigerator
+  description: Whirlpool
   user_id: 1
   number: 1
-  tags: MyString
-  location: MyString
-  category_id: 1
-  status_id: 1
+  tags: some tags
+  location: kitchen
+  category_id: 2
+  ownership_id: 1
 
 two:
-  name: MyString
-  description: MyText
+  name: Computer
+  description: Desktop PC
   user_id: 1
   number: 1
   tags: MyString
-  location: MyString
-  category_id: 1
-  status_id: 1
+  location: office
+  category_id: 3
+  ownership_id: 1

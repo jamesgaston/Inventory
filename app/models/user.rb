@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
    attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone, :admin 
    
    
-	has_many :items
+	has_many :items, :dependent => :destroy  
+	
 	belongs_to :province
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -47,6 +48,17 @@ class User < ActiveRecord::Base
 		user = find_by_id(id)
 		(user && user.salt == cookie_salt) ? user : nil
 	end
+
+	def public_name
+ 		if self.first_name.nil? || self.first_name.blank?
+ 			return "Someone"
+ 		else
+ 			return self.first_name
+ 		end   
+ 	end 		
+		
+
+
 		
 	private
 	
@@ -67,5 +79,6 @@ class User < ActiveRecord::Base
 	def secure_hash(string)
 		Digest::SHA2.hexdigest(string)
 	end
-		
+ 
+ 
 end

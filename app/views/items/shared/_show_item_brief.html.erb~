@@ -1,0 +1,6 @@
+<%= object.first_name.nil? ? "Someone" : object.first_name %> 
+<%= object.public_name %> 
+<%= object.describe_their_ownership %> 
+<%= object.name %> 
+<%= object.description.blank? ? "" : ("(" + object.description + ")" ) %>
+<br> 

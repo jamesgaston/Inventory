@@ -2,14 +2,21 @@
 
 <%= render 'shared/error_messages', :object => f.object %>
 
-I say to <%= @recipient_name %>: 
+<span class="label">
+	<%= @item.user_id == current_user.id ? "Me" : @item.first_name %>: 
+</span> 
+
 <%= f.text_field :message_text, :size => 65 %>
 <%= f.submit "Send" %>
  
   
-<%= f.hidden_field :sender_id %>
-<%= f.hidden_field :recipient_id %>
-<%= f.hidden_field :item_id %>
-<%= f.hidden_field :show_email %> 
+<%= f.hidden_field :seller_item_id %>
+<%= f.hidden_field :seller_user_id %>
+
+<%= f.hidden_field :buyer_item_id %>
+<%= f.hidden_field :buyer_user_id %>
+
+<%= f.hidden_field :sender_user_id %>
+
 <% end %>
 <br />

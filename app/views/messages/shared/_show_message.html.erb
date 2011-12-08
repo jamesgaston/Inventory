@@ -1,0 +1,15 @@
+<span class="label">
+ 	<%= current_user.id == object.sender_user_id ? "Me" : User.find_by_id(object.sender_user_id).public_name %>:
+</span> 
+	
+					
+<%= object.message_text %>
+
+<span class="label">
+		<%= object.created_at.strftime("%I %p, %A, %e %B %Y") %> 
+</span>			
+
+<%= link_to "Delete", {:controller=>"messages", :action => "destroy", :id =>object.id}, 
+					        :confirm => "Are you sure?", :method => :delete %>
+
+<br>   

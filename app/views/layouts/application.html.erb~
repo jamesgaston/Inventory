@@ -13,36 +13,16 @@
  <%= render :partial => 'layouts/header' %>
 
 <div id="yield">
-
-	<% if content_for?(:middle_column) %>
-		<table>
-			<tr>
-				<td width="33%"><%= content_for :left_column %></td>
-				<td width="33%"><%= content_for :middle_column %></td>
-				<td width="33%"><%= content_for :right_column %></td>
-			</tr>		
-		</table>
-
-	<% elsif content_for?(:right_column) %>
-		<table>
-			<tr>
-				<td width="40%"><%= content_for :left_column %></td>
-				<td width="60%"><%= content_for :right_column %></td>
-			</tr>		
-		</table>
-		<% elsif content_for?(:left_column) %>
-				<%= content_for :left_column %></td>
-	<% else %>
 		<%= yield %>
-	<% end %>
-	
-	</div>
+</div>
 	
 	<%= render 'layouts/footer' %>
- <% flash.each do |key, value| %>
+   
+   <% flash.each do |key, value| %>
 			<div class="<%= key %>"><%= key.capitalize %>: <%= value %></div>  
-<% end %>	<%= render 'layouts/debug' %>
-
+   <% end %>	
+   
+   <%= render 'layouts/debug' %>
 
 </body>
 </html>

@@ -1,8 +1,11 @@
+<% title = "New Item" %>
+
 <% content_for :title do %>
-	  New Item
+	  <%= title %>
 <% end %>
 
-<h1>New Item</h1>
+<h1><%= title %></h1>
+
 <div class="list">
-<%= render 'items/shared/edit_item' %>
-<div> 
+	<%= render 'items/shared/edit_item' %>
+</div> 

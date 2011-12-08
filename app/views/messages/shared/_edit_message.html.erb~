@@ -6,15 +6,13 @@
 <%= f.text_field :message_text %><br />
 <br />
 
-<%= f.label :show_email %> 
-<%= f.check_box :show_email %><br />
+
 
 <%= f.submit "Send Message" %><br /><br />
 <%= submit_tag "Cancel", { :name => "message[Cancel]" } %>
+ 
   
-  
-<%= f.hidden_field :sender_id %>
-<%= f.hidden_field :recipient_id %>
-<%= f.hidden_field :item_id %>
+
+
 <% end %>
 <br />
