@@ -5,10 +5,10 @@
 				<%= link_to( "Edit", edit_item_url, :id=>@item.id) %> 
 			</td>
 			<td> 
-				   <%= @item.ownership_text %> 
+				   <%= @item.ownership.name %> 
    		</td>
 			<td>
-					<span class="label">Category:</span> <%= @item.category_text %><br />
+					<span class="label">Category:</span> <%= @item.category.name %><br />
 			</td> 
 			<td>
 					<span class="label">Count:</span>  <%= @item.number.to_s %><br />

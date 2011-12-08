@@ -1,0 +1,5 @@
+Ownership.create(:name => "Currently own")
+Ownership.create(:name => "Want to buy")
+Ownership.create(:name => "Want to sell")
+Ownership.create(:name => "Want to give away")
+Ownership.create(:name => "Want to sell or trade")

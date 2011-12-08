@@ -1,4 +1,6 @@
-<%= object.first_name.nil? ? "Someone" : object.first_name %> 
+<!-- views items shared _show_item_brief.html.erb 
+  -->
+
 <%= object.public_name %> 
 <%= object.describe_their_ownership %> 
 <%= object.name %> 

@@ -1,9 +1,6 @@
 <% content_for :title do %>
-  Edit Item
+  Edit <%= @item.name %>
 <% end %>
 
-<h3>Edit Item</h3>
-<% if @item_owner != "" %>
-	Owned by <%= @item_owner %><br /><br />
-<% end %>
+<h3>Edit <%= @item.name %></h3>
 <%= render 'items/shared/edit_item' %>

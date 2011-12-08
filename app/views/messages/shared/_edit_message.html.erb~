@@ -1,18 +1,22 @@
-<%= form_for(@message) do |f| %>
+<!-- views messages shared _edit_message.html.erb  -->
 
-<%= render 'shared/error_messages', :object => f.object %>
+<%= form_for(object, :action=>"create") do |f| %>
 
-<%= f.label :message_text %><br />
-<%= f.text_field :message_text %><br />
-<br />
+		<%= render 'shared/error_messages', :object => f.object %>
+		
+		<%= @item.first_name %>: 
 
-
-
-<%= f.submit "Send Message" %><br /><br />
-<%= submit_tag "Cancel", { :name => "message[Cancel]" } %>
- 
-  
-
+		<%= f.text_field :message_text, :size => 65 %>
+		<%= f.submit "Send" %>
+		  
+		<%= f.hidden_field :seller_item_id %>
+		<%= f.hidden_field :seller_user_id %>
+		
+		<%= f.hidden_field :buyer_item_id %>
+		<%= f.hidden_field :buyer_user_id %>
+		
+		<%= f.hidden_field :sender_user_id %>
 
 <% end %>
+
 <br />

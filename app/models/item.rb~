@@ -1,43 +1,56 @@
 class Item < ActiveRecord::Base
-	OWNER=1       # values fixed      
-	FORSALE=3     # for now   
+
+			# replaced lookup with three constants
+			# code is hardwired to only support these
+			# three states so why allow them to be edited?
+	OWNER=1            
+	FORSALE=3        
 	WANTED=2
 	
 	belongs_to :user
 	belongs_to :category
 	belongs_to :ownership
+													
+			# new
 	has_many   :messages, :dependent => :destroy  
 	
+			# delegations allow you to map a method 
+			# to an associated model  
 	delegate  :email, :to => :user 
 	delegate  :first_name, :to => :user 
 	delegate  :last_name, :to => :user
 	delegate  :city, :to => :user
 	delegate  :public_name, :to => :user 
-	
-	 
+		 
 	validates :name, :presence => true
   	validates :category_id, :presence => true
 	validates :ownership_id, :presence => true
 	validates :number, :presence => true, 
  				  numericality: {greater_than_or_equal_to: 1}
 
-		
+		 
 	def self.find_my_items(user)
 		return Item.where("user_id == ?", user.id).order('Name')
 	end
 	
-	
-	
+			# Renamed from less descriptive find_matches
+			# Added constants in query 
+			# Down-cased the name so query not case sensitive 
+			
 	def find_items_like_mine
 		if self.forsale
-			return Item.where('ownership_id == 2 AND lower(name) == ?', self.name.downcase)  
+			return Item.where('ownership_id == ? AND lower(name) == ?', WANTED, self.name.downcase)  
 		elsif self.wanted   
-			return Item.where('ownership_id == 3 AND lower(name) == ?', self.name.downcase)
+			return Item.where('ownership_id == ? AND lower(name) == ?', FORSALE,  self.name.downcase)
 	   else    
 	  		return nil 	 
 	   end    
 	end
 	
+			# new method
+			# helps hide message implementation 
+			# find all messages that link this item and another item
+			 
 	def find_messages_in_thread(other_item)
 		if self.forsale
 			return Message.where('seller_item_id  == ? AND buyer_item_id  == ?', self.id, other_item.id)  
@@ -47,6 +60,11 @@ class Item < ActiveRecord::Base
 	  		return nil 	
 	   end    
 	end
+
+
+			# new method
+			# helps hide message implementation 
+			# find all messages about item, regardless of thread  
 
 	def find_all_messages
 		if self.forsale
@@ -59,7 +77,8 @@ class Item < ActiveRecord::Base
 	end
 
 
-
+			# renamed methods 
+			
 	def forsale
 		 return self.ownership_id == FORSALE 	
 	end
@@ -68,6 +87,11 @@ class Item < ActiveRecord::Base
 		 return self.ownership_id == WANTED  	
 	end
 
+
+			# in several places the ownership of an item
+			# needs to be described
+			# using a method hides implementaiton but seems ugly 
+			 
 	def describe_their_ownership
 		if self.forsale
 			return "is selling a"   
@@ -88,6 +112,14 @@ class Item < ActiveRecord::Base
 	   end    
 	end 
 
-
+	def describe_my_ownership_brief
+		if self.forsale
+			return "I want to sell"   
+		elsif self.wanted   
+			return "I want to buy"  
+      else    
+	  		return "I own" 
+	   end    
+	end 
 	
 end

@@ -4,10 +4,9 @@ class User < ActiveRecord::Base
 		# create a virtual password attribute 
 	attr_accessor :password
    attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :country_id, :city, :province_id, :postal_code, :phone, :admin 
-   
-   
+  	 
+   		# delete the user's items when the user is deleted 
 	has_many :items, :dependent => :destroy  
-	
 	belongs_to :province
 
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -49,6 +48,7 @@ class User < ActiveRecord::Base
 		(user && user.salt == cookie_salt) ? user : nil
 	end
 
+		# need an public  way to refer to this user
 	def public_name
  		if self.first_name.nil? || self.first_name.blank?
  			return "Someone"

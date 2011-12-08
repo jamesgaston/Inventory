@@ -1,8 +1,13 @@
+<!-- views messages shared _new_message.html.erb  -->
+
 <%= form_for(object, :action=>"create") do |f| %>
 
 <%= render 'shared/error_messages', :object => f.object %>
 
-<%= @item.user_id == current_user.id ? "Me" : @item.first_name %>: 
+<span class="label">
+	<%= @item.user_id == current_user.id ? "Me" : @item.first_name %>: 
+</span> 
+
 <%= f.text_field :message_text, :size => 65 %>
 <%= f.submit "Send" %>
  

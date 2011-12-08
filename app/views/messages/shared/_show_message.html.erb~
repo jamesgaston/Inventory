@@ -1,15 +1,8 @@
-
-
-<table>
-	<tr> 
-		<td> 
+<!-- views messages shared _show_message.html.erb  -->
 
 <span class="label">
- 	<%= current_user.id == object.sender_user_id ? "Me" : User.find_by_id(object.sender_user_id).public_name %>:
+  	<%= object.sender_name(current_user) %>
 </span> 
-		
-		</td>
-		<td>		
 					
 <%= object.message_text %>
 

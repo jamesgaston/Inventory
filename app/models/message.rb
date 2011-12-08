@@ -1,6 +1,13 @@
 class Message < ActiveRecord::Base
 belongs_to :user
+
+	# Added the association with item 
 belongs_to :item
+
+	# Changed the underlying model so updated validations
+	# Added user_id for buyer and seller, still not convinced I need this redundant
+	# info but am ok putting them here if there is a payoff 
+	
 validates :buyer_item_id, :presence => true
 validates :buyer_user_id, :presence => true
 validates :seller_item_id, :presence => true
@@ -9,6 +16,12 @@ validates :sender_user_id, :presence => true
 validates :message_text, :presence => true
 
 
+	# The show item page also has a form to create new message(s), one per matching item
+	# But to create a new message you need to instantiate it and populate a bunch 
+	# of fields. Seems to expose too much, so moved it to model.
+	# Not a complete success at implementation hiding because we must
+	# carry around a bunch of hidden fields in the form 
+	
 def self.new_message(my_item, other_item)
 	if my_item.forsale 
 		return Message.new( :seller_item_id => my_item.id,
@@ -32,11 +45,20 @@ end
 def self.find_all_for_item(item)
 	 return Message.where('seller_item_id  == ? OR buyer_item_id  == ?', item.id, item.id ) 
 end
-
-			# it is my message, but which item is mine, the buyer_item or seller_item? 
+			
+			# When looking at my message, what item of mine is it, the buyer_item or seller_item? 
+	 
 def my_item
 		return self.sender_user_id == self.seller_user_id ? self.seller_item_id : self.buyer_item_id
 end 
 	
+def sender_name(current_user)
+		if self.sender_user_id == current_user.id 
+			return "Me"
+		else
+			return User.find_by_id(self.sender_user_id).public_name 
+		end 
+end 
+
  
 end

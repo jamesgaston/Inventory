@@ -2,8 +2,9 @@ module ItemsHelper
 	
 def link_to_next_item(current_item)
 		take_next_flag = false
-		user = current_user 
-		items = Item.where("user_id == ?", user.id).order('Name')   	 	
+		
+		items = Item.find_my_items(current_user) 
+				#	items = Item.where("user_id == ?", current_user.id).order('Name')   	 	
 			if (items.nil? == false) && (items.size > 0) 
 				for i in items
 		   		if take_next_flag == true
@@ -17,8 +18,9 @@ def link_to_next_item(current_item)
 end
 
 def link_to_prev_item(current_item)
-		user = current_user 
-		items = Item.where("user_id == ?", user.id).order('Name')   	 	
+		
+		items = Item.find_my_items(current_user) 
+				#		items = Item.where("user_id == ?", current_user.id).order('Name')   	 	
 		prev_item = nil 
 		if (items.nil? == false) && (items.size > 0) 
 				for i in items

@@ -1,3 +1,11 @@
+<!-- views items show.html.erb 
+  -- instance vars: @item, @items_like_mine
+  -- local vars: messages, new_message
+  -- methods:  i.find_message_in_thread, message.new_message 
+  -- helpers:  link_to_prev/next_item 
+  -- partials: uses 4 
+  --------------------------->
+
 <% content_for :title do %>
   <%= @item.name %> 
 <% end %>
@@ -7,6 +15,8 @@
 	<%= @item.name %>
 	<%= link_to_next_item(@item) %>
 </h1> 
+
+
 
 <%= render 'items/shared/show_item'  %>
 

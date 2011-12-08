@@ -2,6 +2,9 @@ class MessagesController < ApplicationController
  include UsersHelper
  include ItemsHelper
 
+		# got rid of new(), edit(), and delete() methods
+		# Maybe update routes so it doesn't generate them?
+
   def create
 	  if !params[:message].include?( 'Cancel' )
 			@message = Message.new(params[:message])
@@ -18,9 +21,14 @@ class MessagesController < ApplicationController
   
   end
 
+		# got rid of unused instance var
+		# the item method makes getting messages easier --
+		# and we don't need to know as much about how messages are implemented
+		 
   def index
     @items = Item.find_all_by_user_id(current_user.id)
    end
+
 
   def destroy
   	@message = Message.find_by_id( params[:id] )
