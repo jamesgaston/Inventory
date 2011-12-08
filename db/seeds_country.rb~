@@ -1,2 +1,0 @@
- Country.create(:name=>"United States")
- Country.create(:name=>"Canada")

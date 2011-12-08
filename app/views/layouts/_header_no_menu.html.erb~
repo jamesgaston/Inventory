@@ -1,6 +1,0 @@
-<div id="top_menu" class="menu">
-			<span class="deadlink">My Inventory<span> 
-			<span class="deadlink">Help<span> 
-	   	<span class="deadlink"><%= current_user.email %><span> 
-			<span class="deadlink">Sign Out<span>  
-</div>
