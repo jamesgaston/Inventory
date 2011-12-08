@@ -1,41 +1,39 @@
-<!-- views messages index.html.erb 
- -- instance vars:  @items
- -- local vars:  messages, i, m
- -- partials: 1 
- -- helpers: 
- -- methods: Message.find_all_for_item(i)
- --          Item.describe_my_ownership     
- -->
+<!-- views messages index.html.erb
+-- instance vars:  @items
+-- local vars:  messages, i, m
+-- partials: 1
+-- helpers:
+-- methods: Message.find_all_for_item(i)
+--          describe_my_ownership_for
+-->
 
 <% content_for :title do %>
-    Messages
+  Messages
 <% end %>
 
 <h1>Messages</h1>
 
-<div class="list"> 
+<div class="list">
 
-		<% if @items.nil? == false  %>
-			<% for i in @items %>
-		
-					<% messages = Message.find_all_for_item(i) %>
-		
-					<% if (messages.nil? == false) && (messages.size > 0) %>
-					
-							 <%= i.describe_my_ownership %> 
-							 
-							 <%= link_to  i.name, :controller=>"items", :action =>"show", :id => i.id %>
-							 <br>  
-		
-							 <% for m in messages %>
-							   	<%= render 'messages/shared/show_message', :object => m %>
-					     	<% end %>	
-		                <br>    
-					<% end %>
-					
-			<% end %>
-			
-		<% end %> 
+  <% if @items.nil? == false  %>
+    <% @items.each do |item| %>
+
+      <% messages = Message.find_all_for_item(item) %>
+
+      <% if (messages.nil? == false) && (messages.size > 0) %>
+
+        <%= describe_my_ownership_for item %>
+
+        <%= link_to  i.name, :controller=>"items", :action =>"show", :id => item.id %>
+        <br>
+
+        <% messages.each do |message| %>
+          <%= render 'messages/shared/show_message', :object => message %>
+        <% end %>
+        <br>
+      <% end %>
+    <% end %>
+  <% end %>
 
 </div>
 
