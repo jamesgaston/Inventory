@@ -59,5 +59,6 @@ def sender_name(current_user)
 			return User.find_by_id(self.sender_user_id).public_name 
 		end 
 end 
+
  
 end

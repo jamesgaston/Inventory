@@ -2,14 +2,12 @@ require 'test_helper'
 
 class MessageTest < ActiveSupport::TestCase
 
-		# test that validations for non-empty messages work 
    test "message empty so not valid " do
      message = Message.new
      assert !message.valid?   	
    end
  
 
-		# test that a new message with all fields populated is valid 
    test "message has all components so valid" do
       message = Message.new
      
@@ -22,8 +20,5 @@ class MessageTest < ActiveSupport::TestCase
  
       assert message.valid?  	
    end
-
-
-
 
 end

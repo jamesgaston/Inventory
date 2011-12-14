@@ -3,7 +3,9 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
-
+	OWNER=1            
+	FORSALE=3        
+	WANTED=2
 
   fixtures :all
 

@@ -1,0 +1,17 @@
+require 'minitest/spec'
+require 'minitest/autorun'
+
+
+describe Item do
+
+	it "minitest item has valid fields" do
+		item = Item.new
+		assert !item.valid? 	
+	end
+	
+	it "minitest test true is true" do
+      assert_equal true, true
+	end
+
+
+end

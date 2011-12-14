@@ -1,7 +1,7 @@
 <!-- views items index.html.erb 
   -- instance vars: @items
   -- local vars: counter, messages, items_like_mine
-  -- methods called: i.find_all_messages, i.describe_my_ownership_brief 
+  -- methods called: i.find_all_messages, i.describe_my_ownership_brief,i.find_items_like_mine 
   --------------------------->
 
 <% content_for :title do %>

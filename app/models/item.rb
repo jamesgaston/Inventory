@@ -28,6 +28,21 @@ class Item < ActiveRecord::Base
 	validates :number, :presence => true, 
  				  numericality: {greater_than_or_equal_to: 1}
 
+		# these three class functions return the value of the 
+		# constant to the test. Can't seem to acces the constants otherwise
+		 
+	def self.constant_forsale
+		return FORSALE
+	end		 
+
+	def self.constant_wanted
+		return WANTED
+	end		 
+	
+	def self.constant_owner
+		return OWNER
+	end		 
+
 		 
 	def self.find_my_items(user)
 		return Item.where("user_id == ?", user.id).order('Name')
@@ -76,7 +91,6 @@ class Item < ActiveRecord::Base
 	   end    
 	end
 
-
 			# renamed methods 
 			
 	def forsale
@@ -87,10 +101,11 @@ class Item < ActiveRecord::Base
 		 return self.ownership_id == WANTED  	
 	end
 
-
 			# in several places the ownership of an item
 			# needs to be described
 			# using a method hides implementaiton but seems ugly 
+			 
+ 		 # move to helpers? 
 			 
 	def describe_their_ownership
 		if self.forsale

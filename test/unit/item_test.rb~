@@ -7,7 +7,7 @@ class ItemTest < ActiveSupport::TestCase
 
 		# test that an empty item is not valid
    test "new item empty" do
-     item = Item.new
+       item = Item.new
      assert !item.valid?, "Item is not valid"  	
    end
 

@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+james:
   first_name: James
   last_name: Gaston
   email: jamesgaston@yahoo.com
@@ -10,12 +10,12 @@ one:
   postal_code: MyString
   phone: MyString
 
-two:
-  first_name: Fred
+marcel:
+  first_name: Marcel
   last_name: Smith
-  email: Fred@fred.com
+  email: marcel@gmail.com
   country_id: 1
-  city: New West
+  city: Burnaby
   province_id: 1
   postal_code: MyString
   phone: MyString

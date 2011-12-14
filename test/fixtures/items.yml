@@ -1,16 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: Refrigerator
-  description: Whirlpool
-  user_id: 1
-  number: 1
-  tags: some tags
-  location: kitchen
-  category_id: 2
-  ownership_id: 1
-
-two:
   name: Computer
   description: Desktop PC
   user_id: 1
@@ -18,4 +7,50 @@ two:
   tags: MyString
   location: office
   category_id: 3
+  ownership_id: 2
+  id: 1  
+
+two:
+  name: Computer
+  description: Windows notebook
+  user_id: 2
+  number: 1
+  tags: MyString
+  location: office
+  category_id: 3
+  ownership_id: 3
+  id: 2
+    
+three:
+  name: Computer
+  description: Mac air 
+  user_id: 2
+  number: 1
+  tags: MyString
+  location: office
+  category_id: 3
+  ownership_id: 3
+  id: 3
+  
+four:
+  name: Refrigerator
+  description: Maytag 
+  user_id: 1
+  number: 1
+  tags: MyString
+  location: kitchen
+  category_id: 2
   ownership_id: 1
+  id: 4
+    
+five:
+  name: Computer
+  description: Laptop 
+  user_id: 1
+  number: 1
+  tags: MyString
+  location: office
+  category_id: 3
+  ownership_id: 1
+  id: 5  
+

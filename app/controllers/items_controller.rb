@@ -47,12 +47,10 @@ class ItemsController < ApplicationController
 		@item = Item.new(params[:item])
 		if @item.save
 			 flash[:notice] = "#{@item.name} was added to your inventory."
-			 
-			 	# why doesn't this work?
-				#	 redirect_to( item_url, :id => @item.id )
+					 	# why doesn't this work?
+			 redirect_to item_url(@item) 
 				# error: No route matches {:action=>"show", :controller=>"items"} ???
-				
-		 	 redirect_to( :controller=>"items", :action =>"show", :id => @item.id ) 
+			 	#redirect_to( :controller=>"items", :action =>"show", :id => @item.id ) 
 		else
 			flash.now[:error] = "Item could not be created."
 			render :layout => 'form', :action => 'new' 
