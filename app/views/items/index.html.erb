@@ -1,62 +1,59 @@
-<!-- views items index.html.erb 
-  -- instance vars: @items
-  -- local vars: counter, messages, items_like_mine
-  -- methods called: i.find_all_messages, i.describe_my_ownership_brief,i.find_items_like_mine 
-  --------------------------->
+<!-- views items index.html.erb
+-- instance vars: @items
+-- local vars: counter, messages, items_like_mine
+-- methods called: item.find_all_messages, describe_my_ownership_brief,item.find_items_like_mine
+--------------------------->
 
 <% content_for :title do %>
-    My Inventory
+  My Inventory
 <% end %>
-
 
 <h1>My Inventory <%= link_to "+New Item", new_item_url, {:title => "Add a new item"} %></h1>
 
 <div class="list">
-		
-		<table width="100%">
-							
-				<% counter = 0 %>
-				
-				<% for i in @items %>
-				
-							<tr>
-							 	<td><%= counter = counter + 1 %>.</td>				
-							 	<td><%= link_to i.name, :controller=>"items", :action=>"show", :id=>i.id %>
-								
- 													<!--------------------------------------------------->
-													<!-- Not crazy about following -- move to a helper -->
- 													<!--------------------------------------------------->
-   						 			<% messages_for_item = i.find_all_messages %>
-							 			<% if (messages_for_item.nil? == false) && (messages_for_item.size > 0) %>
-		   
- 													<!------------------------------------------------------->
-													<!-- Note the handy pluralize(#, string)              -->
- 													<!------------------------------------------------------>
-						 			
-								 			(<%= pluralize(messages_for_item.size, "message") %>)
-							 			<% end %> 
-							 			
-							 	</td>			
-							 	<td><%= i.describe_my_ownership_brief %>
-							   
- 													<!------------------------------------------------------->
-													<!-- Not crazy about the following -- move to a helper -->
- 													<!------------------------------------------------------>
-							    
-			 	   		      <% items_like_mine = i.find_items_like_mine %>
-						 			<% if (items_like_mine.nil? == false) && (items_like_mine.size > 0) %>
-								 			 (<%= pluralize( items_like_mine.size, "match" ) %>)
-						 			<% end %> 
-							   	 
-							   </td>
-								<td><%= i.description.truncate(30, :omission =>"...") %></td>
-								<td align="right">
-								    <%= button_to "Delete", {:action => "destroy", :id =>i.id}, 
-								        :confirm => "Are you sure?", :method => :delete %>
-								 </td>
-						
-							</tr>
-				<% end %>
-		</table>
-</div> 
+
+  <table width="100%">
+
+    <% counter = 0 %>
+
+    <% @items.each do |item| %>
+
+    <tr>
+      <td><%= counter = counter + 1 %>.</td>
+      <td><%= link_to item.name, :controller=>"items", :action=>"show", :id=>item.id %>
+
+        <!--------------------------------------------------->
+        <!-- Not crazy about following -- move to a helper -->
+        <!--------------------------------------------------->
+        <% messages_for_item = item.find_all_messages %>
+        <% if (messages_for_item.nil? == false) && (messages_for_item.size > 0) %>
+
+        <!------------------------------------------------------->
+        <!-- Note the handy pluralize(#, string)              -->
+        <!------------------------------------------------------>
+
+        (<%= pluralize(messages_for_item.size, "message") %>)
+        <% end %>
+      </td>
+      <td>
+        <%= describe_my_ownership_brief_for item %>
+
+        <!------------------------------------------------------->
+        <!-- Not crazy about the following -- move to a helper -->
+        <!------------------------------------------------------>
+
+        <% items_like_mine = item.find_items_like_mine %>
+        <% if (items_like_mine.nil? == false) && (items_like_mine.size > 0) %>
+          (<%= pluralize( items_like_mine.size, "match" ) %>)
+        <% end %>
+
+      </td>
+      <td><%= item.description.truncate(30, :omission =>"...") %></td>
+      <td align="right">
+        <%= button_to "Delete", {:action => "destroy", :id =>item.id}, :confirm => "Are you sure?", :method => :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
 <br />
