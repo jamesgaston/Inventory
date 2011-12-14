@@ -1,6 +1,0 @@
-Ownership.create(:name => "")
-Ownership.create(:name => "")
-Ownership.create(:name => "")
-Ownership.create(:name => "")
-Ownership.create(:name => "")
-Ownership.create(:name => "")

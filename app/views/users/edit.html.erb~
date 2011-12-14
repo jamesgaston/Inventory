@@ -1,1 +1,0 @@
-<%= render :partial => 'users/shared/edit_user', :locals => {:context => "edit" } %>

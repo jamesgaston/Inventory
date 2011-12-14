@@ -1,8 +1,0 @@
-
-<h1>Sign Up</h1>
-<%= render :partial => 'users/shared/edit_user', :locals => {:context => "new" } %>
-
-
- 
-
-
