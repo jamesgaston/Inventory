@@ -1,8 +1,0 @@
-<% content_for :title do %>
-	  New Message
-<% end %>
-
-<h1>New Message</h1>
-To: <br />
-Re: <%= item_ownership(@message.item_id) %> <%= item_name(@message.item_id) %><br />
-<%= render 'messages/shared/edit_message' %>

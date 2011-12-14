@@ -1,5 +1,0 @@
-<% content_for :title do %>
-  <title>Edit Category</title>
-<% end %>
-<h1>Edit Category</h1>
-<%= render 'categories/shared/edit_category' %>

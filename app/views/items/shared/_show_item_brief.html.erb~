@@ -1,8 +1,0 @@
-<!-- views items shared _show_item_brief.html.erb 
-  -->
-
-<%= object.public_name %> 
-<%= object.describe_their_ownership %> 
-<%= object.name %> 
-<%= object.description.blank? ? "" : ("(" + object.description + ")" ) %>
-<br> 

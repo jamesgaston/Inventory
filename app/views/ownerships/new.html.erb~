@@ -1,2 +1,0 @@
-<h1>New Ownership</h1>
-<%= render 'ownerships/shared/edit_ownership' %>
