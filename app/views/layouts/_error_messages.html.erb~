@@ -1,6 +1,0 @@
-<% if @user.errors.any? %>
-	<%= pluralize(@user.errors.count, "error") %>
-	prohibited this user from being saved:
-	
-
-<% end %>

@@ -1,6 +1,0 @@
-<% content_for :title do %>
-  Edit <%= @item.name %>
-<% end %>
-
-<h3>Edit <%= @item.name %></h3>
-<%= render 'items/shared/edit_item' %>
